@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BizIntel — Lead Intelligence Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script src="https://zenithkandel.com.np/fontawesome/zenith-icons.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -12,9 +13,7 @@
     <div id="loader-screen">
       <div class="loader-logo">BizIntel v2.0</div>
       <div class="loader-title">Lead Intelligence Dashboard</div>
-      <div class="loader-subtitle">
-        Loading data from data.json...
-      </div>
+      <div class="loader-subtitle">Loading data from data.json...</div>
       <div class="loader-box">
         <div class="loader-msg">Make sure you are running this via a PHP server (e.g. XAMPP).</div>
         <div id="loader-error"></div>
@@ -25,13 +24,17 @@
     <div id="dashboard">
       <nav class="topbar">
         <div class="topbar-logo">
-          <div class="dot"></div>
-          BizIntel Dashboard
+          <i class="fa-duotone fa-chart-line-up"></i>
+          BizIntel
         </div>
         <div class="topbar-meta" id="topbar-meta"></div>
         <div class="topbar-actions">
-          <button class="topbar-btn" onclick="toggleRawEditor()" title="Open raw JSON editor">Edit JSON</button>
-          <button class="topbar-btn" onclick="showAddForm()" title="Add a new business entry">+ Add Business</button>
+          <button class="topbar-btn" onclick="openJsonModal()">
+            <i class="fa-solid fa-code"></i> Edit JSON
+          </button>
+          <button class="topbar-btn primary" onclick="openAddModal()">
+            <i class="fa-solid fa-plus"></i> Add Business
+          </button>
         </div>
       </nav>
 
@@ -40,30 +43,30 @@
         <div class="stats-grid" id="stats-grid"></div>
 
         <!-- Charts -->
-        <div class="section-title">Intelligence Overview</div>
+        <div class="section-title"><i class="fa-duotone fa-chart-mixed"></i> Intelligence Overview</div>
         <div class="charts-grid">
           <div class="chart-card">
-            <div class="chart-card-title">Businesses by Industry</div>
+            <div class="chart-card-title"><i class="fa-solid fa-industry"></i> Businesses by Industry</div>
             <div class="chart-wrap" style="height: 220px"><canvas id="chart-industry"></canvas></div>
           </div>
           <div class="chart-card">
-            <div class="chart-card-title">Main Platforms Used</div>
+            <div class="chart-card-title"><i class="fa-solid fa-globe"></i> Main Platforms Used</div>
             <div class="chart-wrap" style="height: 220px"><canvas id="chart-platform"></canvas></div>
           </div>
           <div class="chart-card">
-            <div class="chart-card-title">Lead Quality Score Distribution</div>
+            <div class="chart-card-title"><i class="fa-solid fa-chart-bar"></i> Lead Quality Score Distribution</div>
             <div class="chart-wrap" style="height: 220px"><canvas id="chart-scores"></canvas></div>
           </div>
           <div class="chart-card">
-            <div class="chart-card-title">Website Presence &amp; Conversion</div>
+            <div class="chart-card-title"><i class="fa-solid fa-globe-stand"></i> Website Presence &amp; Conversion</div>
             <div class="chart-wrap" style="height: 220px"><canvas id="chart-website"></canvas></div>
           </div>
         </div>
 
         <!-- Filters -->
-        <div class="section-title">Business Intelligence Feed</div>
+        <div class="section-title"><i class="fa-duotone fa-list"></i> Business Intelligence Feed</div>
         <div class="filters-bar">
-          <input type="text" class="filter-search" id="search-input" placeholder="Search..." oninput="applyFilters()" />
+          <input type="text" class="filter-search" id="search-input" placeholder="Search businesses..." oninput="applyFilters()" />
           <div class="filter-group">
             <span class="filter-label">Country</span>
             <select class="filter-select" id="filter-country" onchange="applyFilters()"><option value="">All</option></select>
@@ -93,203 +96,32 @@
               <option value="9">9+</option>
             </select>
           </div>
-          <button class="sort-btn active" id="sort-score" onclick="setSortMode('score')">Score</button>
-          <button class="sort-btn" id="sort-name" onclick="setSortMode('name')">Name A-Z</button>
-          <button class="sort-btn" id="sort-followers" onclick="setSortMode('followers')">Followers</button>
+          <button class="sort-btn active" id="sort-score" onclick="setSortMode('score')"><i class="fa-solid fa-star"></i> Score</button>
+          <button class="sort-btn" id="sort-name" onclick="setSortMode('name')"><i class="fa-solid fa-arrow-a-z"></i> Name A-Z</button>
+          <button class="sort-btn" id="sort-followers" onclick="setSortMode('followers')"><i class="fa-solid fa-users"></i> Followers</button>
           <span class="filter-count" id="filter-count"></span>
-        </div>
-
-        <!-- Raw JSON Editor -->
-        <div class="raw-editor-wrap" id="raw-editor-wrap">
-          <div class="form-section-title" style="margin-bottom:0.75rem;">Edit Raw JSON</div>
-          <div class="raw-editor-box">
-            <div class="raw-editor-label">JSON Data</div>
-            <div class="raw-editor-hint">Edit the JSON below and click "Save JSON" to persist changes to data.json.</div>
-            <textarea id="raw-json-editor"></textarea>
-            <div id="raw-json-error"></div>
-          </div>
-          <div class="raw-editor-actions">
-            <button class="toolbar-btn" onclick="saveRawJson()">Save JSON</button>
-            <button class="toolbar-btn secondary" onclick="cancelRawEdit()">Cancel</button>
-          </div>
-        </div>
-
-        <!-- Add/Edit Form -->
-        <div class="form-section" id="form-section">
-          <div class="form-section-title" id="form-section-title">Add New Business</div>
-          <div class="form-grid">
-            <div class="form-field">
-              <label>Business Name *</label>
-              <input type="text" id="edit-business_name" placeholder="e.g. Himalaya Brew Co." />
-            </div>
-            <div class="form-field">
-              <label>Country</label>
-              <input type="text" id="edit-country" placeholder="e.g. Nepal" />
-            </div>
-            <div class="form-field">
-              <label>City / Region</label>
-              <input type="text" id="edit-city_region" placeholder="e.g. Kathmandu" />
-            </div>
-            <div class="form-field">
-              <label>Industry / Niche</label>
-              <input type="text" id="edit-industry_niche" placeholder="e.g. Food &amp; Beverage" />
-            </div>
-            <div class="form-field">
-              <label>Main Platform</label>
-              <input type="text" id="edit-main_platform" placeholder="e.g. Instagram" />
-            </div>
-            <div class="form-field">
-              <label>Other Platforms (comma sep)</label>
-              <input type="text" id="edit-other_platforms" placeholder="e.g. Facebook, TikTok" />
-            </div>
-            <div class="form-field">
-              <label>Instagram URL</label>
-              <input type="text" id="edit-instagram" placeholder="https://..." />
-            </div>
-            <div class="form-field">
-              <label>Facebook URL</label>
-              <input type="text" id="edit-facebook" placeholder="https://..." />
-            </div>
-            <div class="form-field">
-              <label>TikTok URL</label>
-              <input type="text" id="edit-tiktok" placeholder="https://..." />
-            </div>
-            <div class="form-field">
-              <label>YouTube URL</label>
-              <input type="text" id="edit-youtube" placeholder="https://..." />
-            </div>
-            <div class="form-field">
-              <label>LinkedIn URL</label>
-              <input type="text" id="edit-linkedin" placeholder="https://..." />
-            </div>
-            <div class="form-field">
-              <label>Followers (main platform)</label>
-              <input type="number" id="edit-followers_main" placeholder="e.g. 12000" />
-            </div>
-            <div class="form-field">
-              <label>Engagement Quality</label>
-              <select id="edit-engagement_quality">
-                <option value="">-- Select --</option>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label>Posting Frequency</label>
-              <input type="text" id="edit-posting_frequency" placeholder="e.g. Daily" />
-            </div>
-            <div class="form-field">
-              <label>Website Exists</label>
-              <select id="edit-website_exists">
-                <option value="">-- Select --</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label>Website URL</label>
-              <input type="text" id="edit-website_url" placeholder="https://..." />
-            </div>
-            <div class="form-field">
-              <label>Website Need Signals (pipe | sep)</label>
-              <input type="text" id="edit-website_need_signals" placeholder="No e-commerce | No SEO" />
-            </div>
-            <div class="form-field">
-              <label>Suggested Website Type</label>
-              <input type="text" id="edit-suggested_website_type" placeholder="e.g. E-commerce" />
-            </div>
-            <div class="form-field">
-              <label>Business Maturity</label>
-              <select id="edit-business_maturity">
-                <option value="">-- Select --</option>
-                <option value="Early-stage">Early-stage</option>
-                <option value="Growing">Growing</option>
-                <option value="Established">Established</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label>Email</label>
-              <input type="text" id="edit-email" placeholder="email@example.com" />
-            </div>
-            <div class="form-field">
-              <label>Phone</label>
-              <input type="text" id="edit-phone" placeholder="+977-98..." />
-            </div>
-            <div class="form-field">
-              <label>WhatsApp</label>
-              <input type="text" id="edit-whatsapp" placeholder="+977-98..." />
-            </div>
-            <div class="form-field">
-              <label>Best Contact Method</label>
-              <input type="text" id="edit-best_method" placeholder="e.g. Instagram DM" />
-            </div>
-            <div class="form-field">
-              <label>Founder / Owner</label>
-              <input type="text" id="edit-founder_owner" placeholder="e.g. Aarav Shrestha" />
-            </div>
-            <div class="form-field">
-              <label>Lead Score (1-10)</label>
-              <input type="number" id="edit-lead_quality_score" min="1" max="10" placeholder="e.g. 8" />
-            </div>
-            <div class="form-field">
-              <label>Conversion Potential</label>
-              <select id="edit-conversion_potential">
-                <option value="">-- Select --</option>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label>Payment Capacity</label>
-              <select id="edit-payment_capacity">
-                <option value="">-- Select --</option>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-field" style="margin-bottom:0.75rem;">
-            <label>Description</label>
-            <textarea id="edit-description" placeholder="Describe the business..."></textarea>
-          </div>
-          <div class="form-field" style="margin-bottom:0.75rem;">
-            <label>Observations</label>
-            <textarea id="edit-observations" placeholder="Analyst notes..."></textarea>
-          </div>
-          <div class="form-field" style="margin-bottom:0.75rem; display:none;">
-            <label>ID (auto-generated)</label>
-            <input type="text" id="edit-id" readonly />
-          </div>
-          <div class="form-actions">
-            <button class="btn-save" onclick="saveBusiness()">Save</button>
-            <button class="btn-delete" id="delete-from-form-btn" onclick="deleteFromForm()" style="display:none;">Delete</button>
-            <button class="btn-cancel" onclick="closeForm()">Cancel</button>
-          </div>
         </div>
 
         <!-- Business Grid -->
         <div class="biz-grid" id="biz-grid"></div>
 
         <!-- Analysis -->
-        <div class="section-title">Strategic Analysis</div>
+        <div class="section-title"><i class="fa-solid fa-lightbulb"></i> Strategic Analysis</div>
         <div class="analysis-section">
           <div class="analysis-grid" id="analysis-grid"></div>
         </div>
       </div>
     </div>
 
-    <!-- MODAL -->
+    <!-- MODAL WRAPPER (shared) -->
     <div class="modal-overlay" id="modal-overlay">
-      <div class="modal">
+      <div class="modal" id="modal">
         <div class="modal-header">
           <div>
             <div class="modal-title" id="modal-title"></div>
             <div class="modal-subtitle" id="modal-subtitle"></div>
           </div>
-          <button class="modal-close" onclick="closeModal()">X</button>
+          <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-times"></i></button>
         </div>
         <div class="modal-body" id="modal-body"></div>
       </div>
