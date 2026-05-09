@@ -1,0 +1,17 @@
+<IfModule mod_php.c>
+    php_value upload_max_filesize 128M
+    php_value post_max_size 128M
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+<Limit GET POST OPTIONS>
+    Allow from all
+</Limit>
+<LimitExcept GET POST OPTIONS>
+    Deny from all
+</LimitExcept>

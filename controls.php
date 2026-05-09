@@ -52,7 +52,16 @@ if ($method === 'GET') {
 
 if ($method === 'POST') {
     $rawInput = file_get_contents('php://input');
-    $input = json_decode($rawInput, true);
+
+    $input = null;
+    $isFormData = false;
+
+    if (!empty($rawInput) && strpos($rawInput, '=') !== false) {
+        parse_str($rawInput, $input);
+        $isFormData = true;
+    } else if (!empty($rawInput)) {
+        $input = json_decode($rawInput, true);
+    }
 
     if ($input === null && !empty($rawInput)) {
         http_response_code(400);
