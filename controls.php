@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 define('DATA_FILE', __DIR__ . '/data.json');
 
-function readData() {
+function readData()
+{
     if (!file_exists(DATA_FILE)) {
         http_response_code(404);
         echo json_encode(['error' => 'data.json not found']);
@@ -26,7 +27,8 @@ function readData() {
     return json_decode($content, true);
 }
 
-function writeData($data) {
+function writeData($data)
+{
     $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     if ($json === null) {
         http_response_code(500);
@@ -96,7 +98,7 @@ if ($method === 'POST') {
             }
             writeData($parsed);
             echo json_encode(['status' => 'ok']);
-            break;
+            exit;
         }
 
         case 'update_business': {
@@ -142,7 +144,7 @@ if ($method === 'POST') {
 
             writeData($data);
             echo json_encode(['status' => 'ok']);
-            break;
+            exit;
         }
 
         case 'delete_business': {
@@ -156,7 +158,7 @@ if ($method === 'POST') {
 
             $data = readData();
             $before = count($data['businesses']);
-            $data['businesses'] = array_values(array_filter($data['businesses'], function($biz) use ($businessId) {
+            $data['businesses'] = array_values(array_filter($data['businesses'], function ($biz) use ($businessId) {
                 return $biz['id'] !== $businessId;
             }));
 
@@ -183,7 +185,7 @@ if ($method === 'POST') {
 
             writeData($data);
             echo json_encode(['status' => 'ok']);
-            break;
+            exit;
         }
 
         case 'add_business': {
@@ -209,7 +211,7 @@ if ($method === 'POST') {
                 $maxNum = 0;
                 foreach ($data['businesses'] as $biz) {
                     if (preg_match('/^BIZ_(\d+)$/', $biz['id'], $m)) {
-                        $maxNum = max($maxNum, (int)$m[1]);
+                        $maxNum = max($maxNum, (int) $m[1]);
                     }
                 }
                 $newBusiness['id'] = 'BIZ_' . str_pad($maxNum + 1, 3, '0', STR_PAD_LEFT);
@@ -233,7 +235,7 @@ if ($method === 'POST') {
 
             writeData($data);
             echo json_encode(['status' => 'ok', 'new_id' => $newBusiness['id']]);
-            break;
+            exit;
         }
 
         default: {
