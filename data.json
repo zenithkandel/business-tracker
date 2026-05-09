@@ -3650,6 +3650,516 @@
       "conversion_potential": "High",
       "payment_capacity": "High",
       "observations": "One of the stronger lifestyle brands in the dataset and a good candidate for advanced ecommerce optimization and SEO."
+    },
+    {
+      "id": "BIZ_071",
+      "business_name": "Vintage Girls Nepal",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A thrift and vintage fashion seller operating primarily through Instagram stories and DM-based sales.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook", "TikTok"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/vintagegirlsnepal/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 18000,
+        "main_platform_label": "18K",
+        "total_estimated": 20000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "Daily",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Entirely dependent on Instagram drops and story-based ordering."
+      },
+      "website_need_signals": [
+        "No product archive",
+        "Story-based sales disappear quickly",
+        "No checkout or inventory system"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong Gen-Z audience and rapid inventory movement make it ideal for ecommerce automation."
+    },
+    {
+      "id": "BIZ_072",
+      "business_name": "Himalayan Java Academy",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Education & Coaching",
+      "description": "Coffee and barista training academy promoting courses through social media and in-person registration.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 6500,
+        "main_platform_label": "6.5K",
+        "total_estimated": 8000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "2-4x/week",
+      "website": {
+        "exists": true,
+        "url": "https://himalayanjava.com",
+        "quality_score": 4,
+        "quality_analysis": "Main brand website exists but academy lacks dedicated enrollment and LMS functionality."
+      },
+      "website_need_signals": [
+        "No course booking portal",
+        "Manual inquiries",
+        "No student dashboard"
+      ],
+      "suggested_website_type": "Booking System",
+      "business_maturity": "Established",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Facebook Message"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "Medium",
+      "payment_capacity": "High",
+      "observations": "Education vertical with recurring revenue potential and strong offline credibility."
+    },
+    {
+      "id": "BIZ_073",
+      "business_name": "Sajilo Prints",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Art & Creative",
+      "description": "A printing and custom merchandise business handling custom orders via Messenger and Instagram.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 4300,
+        "main_platform_label": "4.3K",
+        "total_estimated": 5000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No online quote system or product configurator available."
+      },
+      "website_need_signals": [
+        "Custom quote requests done manually",
+        "No online portfolio",
+        "No bulk order system"
+      ],
+      "suggested_website_type": "Portfolio",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Facebook Message"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Low",
+      "observations": "Would benefit from automated quotation forms and a visual portfolio website."
+    },
+    {
+      "id": "BIZ_074",
+      "business_name": "Everest Momos",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Food & Beverage",
+      "description": "A fast-growing momo and street-food brand popular among young audiences on TikTok and Instagram.",
+      "main_platform": "Instagram",
+      "other_platforms": ["TikTok", "Facebook"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 22000,
+        "main_platform_label": "22K",
+        "total_estimated": 30000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "Daily",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No ordering website despite heavy viral social traffic."
+      },
+      "website_need_signals": [
+        "No delivery ordering system",
+        "Viral content not monetized via web",
+        "No loyalty or customer database"
+      ],
+      "suggested_website_type": "Restaurant Menu Site",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong viral brand potential but fully dependent on social algorithms."
+    },
+    {
+      "id": "BIZ_075",
+      "business_name": "Nomad Yoga Nepal",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Health & Fitness",
+      "description": "A yoga and wellness community offering retreats and classes promoted through Instagram.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": "https://linktr.ee/nomadyoganepal",
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 7600,
+        "main_platform_label": "7.6K",
+        "total_estimated": 8500
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-4x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Retreat bookings and inquiries handled through Linktree and DMs."
+      },
+      "website_need_signals": [
+        "No retreat booking system",
+        "No event calendar",
+        "Linktree replacing website"
+      ],
+      "suggested_website_type": "Booking System",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Tourism and wellness niches combine well for SEO-focused booking websites."
+    },
+    {
+      "id": "BIZ_076",
+      "business_name": "The Yarn Club Nepal",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Handmade & Crafts",
+      "description": "A crochet and handmade accessories store selling through Instagram and pop-up events.",
+      "main_platform": "Instagram",
+      "other_platforms": ["TikTok"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 5200,
+        "main_platform_label": "5.2K",
+        "total_estimated": 6000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "Daily",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No online storefront for handmade collections."
+      },
+      "website_need_signals": [
+        "Limited inventory visibility",
+        "No ecommerce system",
+        "Manual payment coordination"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Early-stage",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Low",
+      "observations": "Highly aesthetic products suitable for Pinterest and SEO-driven ecommerce."
+    },
+    {
+      "id": "BIZ_077",
+      "business_name": "Peak Pixel Studio",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Photography & Videography",
+      "description": "A wedding and commercial videography studio showcasing reels and cinematic edits on Instagram.",
+      "main_platform": "Instagram",
+      "other_platforms": ["YouTube", "Facebook"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 9800,
+        "main_platform_label": "9.8K",
+        "total_estimated": 13000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "4-6x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No dedicated portfolio or booking website despite premium service positioning."
+      },
+      "website_need_signals": [
+        "No inquiry automation",
+        "No portfolio categorization",
+        "No package pricing visibility"
+      ],
+      "suggested_website_type": "Portfolio",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "High",
+      "observations": "Creative studios benefit heavily from cinematic portfolio websites."
+    },
+    {
+      "id": "BIZ_078",
+      "business_name": "Bamboo Hive Nepal",
+      "country": "Nepal",
+      "city_region": "Chitwan",
+      "industry_niche": "Handmade & Crafts",
+      "description": "An eco-friendly bamboo product business selling household and decorative items.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 3700,
+        "main_platform_label": "3.7K",
+        "total_estimated": 4200
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "2-3x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No export-friendly ecommerce infrastructure despite eco-friendly positioning."
+      },
+      "website_need_signals": [
+        "No global checkout",
+        "No catalog system",
+        "Facebook-only sales"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Facebook Message"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Low",
+      "observations": "Eco-friendly export category has strong long-term SEO potential."
+    },
+    {
+      "id": "BIZ_079",
+      "business_name": "Cafe Mitra",
+      "country": "Nepal",
+      "city_region": "Bhaktapur",
+      "industry_niche": "Food & Beverage",
+      "description": "A youth-focused cafe using aesthetic reels and food photography to attract customers.",
+      "main_platform": "Instagram",
+      "other_platforms": ["TikTok", "Facebook"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 8300,
+        "main_platform_label": "8.3K",
+        "total_estimated": 9500
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "Daily",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No reservations or online ordering available."
+      },
+      "website_need_signals": [
+        "Instagram-only discovery",
+        "No digital menu",
+        "No booking system"
+      ],
+      "suggested_website_type": "Restaurant Menu Site",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Aesthetic cafes convert well with modern landing pages and menu systems."
+    },
+    {
+      "id": "BIZ_080",
+      "business_name": "Trail Sisters Nepal",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Travel & Tourism",
+      "description": "A women-led trekking and travel community organizing hikes and outdoor adventures.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook", "LinkedIn"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": "https://linktr.ee/trailsistersnepal",
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": 12000,
+        "main_platform_label": "12K",
+        "total_estimated": 14000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "4-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Uses Linktree and forms instead of dedicated booking infrastructure."
+      },
+      "website_need_signals": [
+        "No trek booking portal",
+        "No itinerary pages",
+        "No traveler testimonials system"
+      ],
+      "suggested_website_type": "Booking System",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong community-driven tourism brand with major SEO and booking potential."
     }
   ],
   "analysis": {
