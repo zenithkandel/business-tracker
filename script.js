@@ -775,7 +775,7 @@ function buildAnalysis(analysis, biz) {
     }
 
     cards.push(topListCard('Top 15 Highest Potential', 'fa-trophy', analysis.top_15_highest_potential, 'var(--green)'));
-    cards.push(topListCard('Easiest to Approach', 'fa-hand-wave', analysis.top_10_easiest_approach, 'var(--teal)'));
+    cards.push(topListCard('Easiest to Approach', 'fa-hand', analysis.top_10_easiest_approach, 'var(--teal)'));
     cards.push(topListCard('Most Likely to Pay', 'fa-sack-dollar', analysis.top_10_likely_to_pay, 'var(--yellow)'));
     cards.push(topListCard('Best for E-Commerce', 'fa-cart-shopping', analysis.top_10_ecommerce, 'var(--purple)'));
     cards.push(topListCard('Best for SEO + AdSense', 'fa-chart-line-up', analysis.top_10_seo_adsense, 'var(--accent)'));
@@ -785,6 +785,21 @@ function buildAnalysis(analysis, biz) {
     if ((analysis.common_patterns || []).length) {
         cards.push('<div class="analysis-card"><div class="analysis-card-title"><i class="fa-solid fa-magnifying-glass"></i> Common Patterns Discovered</div><div class="pattern-list">' +
             analysis.common_patterns.map(p => '<div class="pattern-item"><i class="fa-solid fa-magnifying-glass-chart"></i> ' + esc(p) + '</div>').join('') + '</div></div>');
+    }
+    if ((analysis.biggest_problems || []).length) {
+        cards.push('<div class="analysis-card"><div class="analysis-card-title"><i class="fa-solid fa-triangle-exclamation"></i> Biggest Website Problems</div><div class="pattern-list">' +
+            analysis.biggest_problems.map(p => '<div class="problem-item"><i class="fa-solid fa-warning"></i> ' + esc(p) + '</div>').join('') + '</div></div>');
+    }
+    if ((analysis.outreach_strategies || []).length) {
+        cards.push('<div class="analysis-card"><div class="analysis-card-title"><i class="fa-solid fa-bullhorn"></i> Best Outreach Strategies</div><div class="strategy-list">' +
+            analysis.outreach_strategies.map(p => '<div class="strategy-item"><i class="fa-solid fa-megaphone"></i> ' + esc(p) + '</div>').join('') + '</div></div>');
+    }
+    if ((analysis.best_industries_to_target_first || []).length) {
+        cards.push('<div class="analysis-card"><div class="analysis-card-title"><i class="fa-solid fa-bullseye"></i> Best Industries to Target First</div><div>' +
+            analysis.best_industries_to_target_first.map(i => '<span class="industry-pill"><i class="fa-solid fa-crosshairs"></i> ' + esc(i) + '</span>').join('') + '</div></div>');
+    }
+    if (analysis.approach_strategy_for_beginners) {
+        cards.push('<div class="analysis-card" style="grid-column:1/-1"><div class="analysis-card-title"><i class="fa-solid fa-lightbulb"></i> Approach Strategy for Beginners</div><div class="approach-box"><i class="fa-solid fa-graduation-cap"></i> ' + esc(analysis.approach_strategy_for_beginners) + '</div></div>');
     }
     if ((analysis.biggest_problems || []).length) {
         cards.push('<div class="analysis-card"><div class="analysis-card-title"><i class="fa-solid fa-triangle-exclamation"></i> Biggest Website Problems</div><div class="pattern-list">' +
