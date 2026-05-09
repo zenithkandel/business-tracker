@@ -4,14 +4,15 @@
 </IfModule>
 
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
-    Header set Access-Control-Allow-Headers "Content-Type"
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type"
 </IfModule>
 
-<Limit GET POST OPTIONS>
-    Allow from all
-</Limit>
-<LimitExcept GET POST OPTIONS>
-    Deny from all
-</LimitExcept>
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>
+
+Order Allow,Allow
+Allow from all
