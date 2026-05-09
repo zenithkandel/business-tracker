@@ -8,35 +8,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- LOADER -->
     <div id="loader-screen">
-      <div class="loader-logo">BizIntel v2.0 — Lead Intelligence Dashboard</div>
-      <div class="loader-title">Load your <span>Research Dataset</span></div>
+      <div class="loader-logo">BizIntel v2.0</div>
+      <div class="loader-title">Lead Intelligence Dashboard</div>
       <div class="loader-subtitle">
-        Paste the JSON output from the optimized research prompt, or upload a
-        .json file to visualize your business intelligence data.
+        Loading data from data.json...
       </div>
       <div class="loader-box">
-        <label>Paste JSON data</label>
-        <textarea
-          id="json-textarea"
-          placeholder='{"metadata": {...}, "businesses": [...], "analysis": {...}}'
-        ></textarea>
-        <div id="load-error"></div>
-        <div class="loader-divider">or</div>
-        <label class="upload-btn" for="file-input">
-          <span>Upload a .json file</span>
-        </label>
-        <input type="file" id="file-input" accept=".json,application/json" />
-        <button class="btn-primary" onclick="loadData()">
-          Load &amp; Visualize &rarr;
-        </button>
-        <div class="loader-sample">
-          No data yet? <a onclick="loadSampleData()">Load sample dataset</a> to
-          preview the dashboard.
-        </div>
+        <div class="loader-msg">Make sure you are running this via a PHP server (e.g. XAMPP).</div>
+        <div id="loader-error"></div>
       </div>
     </div>
 
+    <!-- DASHBOARD -->
     <div id="dashboard">
       <nav class="topbar">
         <div class="topbar-logo">
@@ -44,67 +29,52 @@
           BizIntel Dashboard
         </div>
         <div class="topbar-meta" id="topbar-meta"></div>
-        <button class="topbar-reset" onclick="resetDashboard()">&#8634; Reset</button>
+        <div class="topbar-actions">
+          <button class="topbar-btn" onclick="toggleRawEditor()" title="Open raw JSON editor">Edit JSON</button>
+          <button class="topbar-btn" onclick="showAddForm()" title="Add a new business entry">+ Add Business</button>
+        </div>
       </nav>
+
       <div class="dashboard-inner">
+        <!-- Stats -->
         <div class="stats-grid" id="stats-grid"></div>
 
+        <!-- Charts -->
         <div class="section-title">Intelligence Overview</div>
         <div class="charts-grid">
           <div class="chart-card">
-            <div class="chart-card-title">Businesses by industry</div>
-            <div class="chart-wrap" style="height: 220px">
-              <canvas id="chart-industry"></canvas>
-            </div>
+            <div class="chart-card-title">Businesses by Industry</div>
+            <div class="chart-wrap" style="height: 220px"><canvas id="chart-industry"></canvas></div>
           </div>
           <div class="chart-card">
-            <div class="chart-card-title">Main platforms used</div>
-            <div class="chart-wrap" style="height: 220px">
-              <canvas id="chart-platform"></canvas>
-            </div>
+            <div class="chart-card-title">Main Platforms Used</div>
+            <div class="chart-wrap" style="height: 220px"><canvas id="chart-platform"></canvas></div>
           </div>
           <div class="chart-card">
-            <div class="chart-card-title">Lead quality score distribution</div>
-            <div class="chart-wrap" style="height: 220px">
-              <canvas id="chart-scores"></canvas>
-            </div>
+            <div class="chart-card-title">Lead Quality Score Distribution</div>
+            <div class="chart-wrap" style="height: 220px"><canvas id="chart-scores"></canvas></div>
           </div>
           <div class="chart-card">
-            <div class="chart-card-title">
-              Website presence &amp; conversion potential
-            </div>
-            <div class="chart-wrap" style="height: 220px">
-              <canvas id="chart-website"></canvas>
-            </div>
+            <div class="chart-card-title">Website Presence &amp; Conversion</div>
+            <div class="chart-wrap" style="height: 220px"><canvas id="chart-website"></canvas></div>
           </div>
         </div>
 
+        <!-- Filters -->
         <div class="section-title">Business Intelligence Feed</div>
         <div class="filters-bar">
-          <input
-            type="text"
-            class="filter-search"
-            id="search-input"
-            placeholder="Search businesses..."
-            oninput="applyFilters()"
-          />
+          <input type="text" class="filter-search" id="search-input" placeholder="Search..." oninput="applyFilters()" />
           <div class="filter-group">
             <span class="filter-label">Country</span>
-            <select class="filter-select" id="filter-country" onchange="applyFilters()">
-              <option value="">All</option>
-            </select>
+            <select class="filter-select" id="filter-country" onchange="applyFilters()"><option value="">All</option></select>
           </div>
           <div class="filter-group">
             <span class="filter-label">Industry</span>
-            <select class="filter-select" id="filter-industry" onchange="applyFilters()">
-              <option value="">All</option>
-            </select>
+            <select class="filter-select" id="filter-industry" onchange="applyFilters()"><option value="">All</option></select>
           </div>
           <div class="filter-group">
             <span class="filter-label">Platform</span>
-            <select class="filter-select" id="filter-platform" onchange="applyFilters()">
-              <option value="">All</option>
-            </select>
+            <select class="filter-select" id="filter-platform" onchange="applyFilters()"><option value="">All</option></select>
           </div>
           <div class="filter-group">
             <span class="filter-label">Website</span>
@@ -115,7 +85,7 @@
             </select>
           </div>
           <div class="filter-group">
-            <span class="filter-label">Min score</span>
+            <span class="filter-label">Min Score</span>
             <select class="filter-select" id="filter-score" onchange="applyFilters()">
               <option value="0">Any</option>
               <option value="7">7+</option>
@@ -123,71 +93,78 @@
               <option value="9">9+</option>
             </select>
           </div>
-          <button class="sort-btn active" id="sort-score" onclick="setSortMode('score')">
-            Score &darr;
-          </button>
-          <button class="sort-btn" id="sort-name" onclick="setSortMode('name')">
-            Name A-Z
-          </button>
-          <button class="sort-btn" id="sort-followers" onclick="setSortMode('followers')">
-            Followers &darr;
-          </button>
+          <button class="sort-btn active" id="sort-score" onclick="setSortMode('score')">Score</button>
+          <button class="sort-btn" id="sort-name" onclick="setSortMode('name')">Name A-Z</button>
+          <button class="sort-btn" id="sort-followers" onclick="setSortMode('followers')">Followers</button>
           <span class="filter-count" id="filter-count"></span>
         </div>
 
-        <button class="form-toggle-btn" onclick="addNewBusiness()">+ Add New Business</button>
-        <button class="form-toggle-btn" onclick="toggleEditForm()">Edit / Delete Entry</button>
+        <!-- Raw JSON Editor -->
+        <div class="raw-editor-wrap" id="raw-editor-wrap">
+          <div class="form-section-title" style="margin-bottom:0.75rem;">Edit Raw JSON</div>
+          <div class="raw-editor-box">
+            <div class="raw-editor-label">JSON Data</div>
+            <div class="raw-editor-hint">Edit the JSON below and click "Save JSON" to persist changes to data.json.</div>
+            <textarea id="raw-json-editor"></textarea>
+            <div id="raw-json-error"></div>
+          </div>
+          <div class="raw-editor-actions">
+            <button class="toolbar-btn" onclick="saveRawJson()">Save JSON</button>
+            <button class="toolbar-btn secondary" onclick="cancelRawEdit()">Cancel</button>
+          </div>
+        </div>
 
-        <div class="edit-form-section" id="edit-form-section">
-          <div class="edit-form-title">Business Entry Form</div>
+        <!-- Add/Edit Form -->
+        <div class="form-section" id="form-section">
+          <div class="form-section-title" id="form-section-title">Add New Business</div>
           <div class="form-grid">
             <div class="form-field">
               <label>Business Name *</label>
-              <input type="text" id="edit-business_name" />
+              <input type="text" id="edit-business_name" placeholder="e.g. Himalaya Brew Co." />
             </div>
             <div class="form-field">
               <label>Country</label>
-              <input type="text" id="edit-country" />
+              <input type="text" id="edit-country" placeholder="e.g. Nepal" />
             </div>
             <div class="form-field">
               <label>City / Region</label>
-              <input type="text" id="edit-city_region" />
+              <input type="text" id="edit-city_region" placeholder="e.g. Kathmandu" />
             </div>
             <div class="form-field">
               <label>Industry / Niche</label>
-              <input type="text" id="edit-industry_niche" />
+              <input type="text" id="edit-industry_niche" placeholder="e.g. Food &amp; Beverage" />
             </div>
             <div class="form-field">
               <label>Main Platform</label>
-              <input type="text" id="edit-main_platform" />
+              <input type="text" id="edit-main_platform" placeholder="e.g. Instagram" />
             </div>
             <div class="form-field">
               <label>Other Platforms (comma sep)</label>
-              <input type="text" id="edit-other_platforms" />
+              <input type="text" id="edit-other_platforms" placeholder="e.g. Facebook, TikTok" />
             </div>
             <div class="form-field">
               <label>Instagram URL</label>
-              <input type="text" id="edit-instagram" />
+              <input type="text" id="edit-instagram" placeholder="https://..." />
             </div>
             <div class="form-field">
               <label>Facebook URL</label>
-              <input type="text" id="edit-facebook" />
+              <input type="text" id="edit-facebook" placeholder="https://..." />
             </div>
             <div class="form-field">
               <label>TikTok URL</label>
-              <input type="text" id="edit-tiktok" />
+              <input type="text" id="edit-tiktok" placeholder="https://..." />
             </div>
             <div class="form-field">
               <label>YouTube URL</label>
-              <input type="text" id="edit-youtube" />
+              <input type="text" id="edit-youtube" placeholder="https://..." />
             </div>
             <div class="form-field">
               <label>LinkedIn URL</label>
-              <input type="text" id="edit-linkedin" />
+              <input type="text" id="edit-linkedin" placeholder="https://..." />
             </div>
             <div class="form-field">
               <label>Followers (main platform)</label>
-              <input type="number" id="edit-followers_main" />
+              <input type="number" id="edit-followers_main" placeholder="e.g. 12000" />
             </div>
             <div class="form-field">
               <label>Engagement Quality</label>
@@ -200,7 +177,7 @@
             </div>
             <div class="form-field">
               <label>Posting Frequency</label>
-              <input type="text" id="edit-posting_frequency" />
+              <input type="text" id="edit-posting_frequency" placeholder="e.g. Daily" />
             </div>
             <div class="form-field">
               <label>Website Exists</label>
@@ -212,15 +189,15 @@
             </div>
             <div class="form-field">
               <label>Website URL</label>
-              <input type="text" id="edit-website_url" />
+              <input type="text" id="edit-website_url" placeholder="https://..." />
             </div>
             <div class="form-field">
-              <label>Website Need Signals (| sep)</label>
-              <input type="text" id="edit-website_need_signals" />
+              <label>Website Need Signals (pipe | sep)</label>
+              <input type="text" id="edit-website_need_signals" placeholder="No e-commerce | No SEO" />
             </div>
             <div class="form-field">
               <label>Suggested Website Type</label>
-              <input type="text" id="edit-suggested_website_type" />
+              <input type="text" id="edit-suggested_website_type" placeholder="e.g. E-commerce" />
             </div>
             <div class="form-field">
               <label>Business Maturity</label>
@@ -233,27 +210,27 @@
             </div>
             <div class="form-field">
               <label>Email</label>
-              <input type="text" id="edit-email" />
+              <input type="text" id="edit-email" placeholder="email@example.com" />
             </div>
             <div class="form-field">
               <label>Phone</label>
-              <input type="text" id="edit-phone" />
+              <input type="text" id="edit-phone" placeholder="+977-98..." />
             </div>
             <div class="form-field">
               <label>WhatsApp</label>
-              <input type="text" id="edit-whatsapp" />
+              <input type="text" id="edit-whatsapp" placeholder="+977-98..." />
             </div>
             <div class="form-field">
               <label>Best Contact Method</label>
-              <input type="text" id="edit-best_method" />
+              <input type="text" id="edit-best_method" placeholder="e.g. Instagram DM" />
             </div>
             <div class="form-field">
               <label>Founder / Owner</label>
-              <input type="text" id="edit-founder_owner" />
+              <input type="text" id="edit-founder_owner" placeholder="e.g. Aarav Shrestha" />
             </div>
             <div class="form-field">
-              <label>Lead Quality Score (1-10)</label>
-              <input type="number" id="edit-lead_quality_score" min="1" max="10" />
+              <label>Lead Score (1-10)</label>
+              <input type="number" id="edit-lead_quality_score" min="1" max="10" placeholder="e.g. 8" />
             </div>
             <div class="form-field">
               <label>Conversion Potential</label>
@@ -274,27 +251,29 @@
               </select>
             </div>
           </div>
-          <div class="form-field" style="margin-bottom: 1rem;">
+          <div class="form-field" style="margin-bottom:0.75rem;">
             <label>Description</label>
-            <textarea id="edit-description"></textarea>
+            <textarea id="edit-description" placeholder="Describe the business..."></textarea>
           </div>
-          <div class="form-field" style="margin-bottom: 1rem;">
+          <div class="form-field" style="margin-bottom:0.75rem;">
             <label>Observations</label>
-            <textarea id="edit-observations"></textarea>
+            <textarea id="edit-observations" placeholder="Analyst notes..."></textarea>
           </div>
-          <div class="form-field" style="margin-bottom: 1rem; display: none;">
-            <label>ID (readonly)</label>
+          <div class="form-field" style="margin-bottom:0.75rem; display:none;">
+            <label>ID (auto-generated)</label>
             <input type="text" id="edit-id" readonly />
           </div>
           <div class="form-actions">
-            <button class="btn-primary" onclick="submitEdit()">Save Changes</button>
-            <button class="btn-primary" onclick="submitNew()">Add New Business</button>
-            <button class="btn-secondary" onclick="resetEditForm(); document.getElementById('edit-form-section').classList.remove('active');">Cancel</button>
+            <button class="btn-save" onclick="saveBusiness()">Save</button>
+            <button class="btn-delete" id="delete-from-form-btn" onclick="deleteFromForm()" style="display:none;">Delete</button>
+            <button class="btn-cancel" onclick="closeForm()">Cancel</button>
           </div>
         </div>
 
+        <!-- Business Grid -->
         <div class="biz-grid" id="biz-grid"></div>
 
+        <!-- Analysis -->
         <div class="section-title">Strategic Analysis</div>
         <div class="analysis-section">
           <div class="analysis-grid" id="analysis-grid"></div>
@@ -302,19 +281,21 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
-      <div class="modal" id="modal">
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal">
         <div class="modal-header">
           <div>
             <div class="modal-title" id="modal-title"></div>
             <div class="modal-subtitle" id="modal-subtitle"></div>
           </div>
-          <button class="modal-close" onclick="closeModal()">&#10005;</button>
+          <button class="modal-close" onclick="closeModal()">X</button>
         </div>
         <div class="modal-body" id="modal-body"></div>
       </div>
     </div>
 
+    <!-- TOAST -->
     <div id="toast"></div>
 
     <script src="script.js"></script>
