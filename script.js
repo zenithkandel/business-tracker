@@ -846,9 +846,13 @@ function apiCall(payload, callback) {
     xhr.open('POST', API, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
-        let data;
-        try { data = JSON.parse(xhr.responseText); } catch (e) { data = null; }
-        callback(data);
+        if (xhr.status >= 200 && xhr.status < 300) {
+            let data;
+            try { data = JSON.parse(xhr.responseText); } catch (e) { data = null; }
+            callback(data);
+        } else {
+            callback(null);
+        }
     };
     xhr.onerror = function () { callback(null); };
     xhr.send(JSON.stringify(payload));
