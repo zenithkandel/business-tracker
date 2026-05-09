@@ -3123,6 +3123,533 @@
       "conversion_potential": "High",
       "payment_capacity": "Medium",
       "observations": "Strong customization angle and delivery system but lacks scalable ecommerce operations."
+    },
+    {
+      "id": "BIZ_061",
+      "business_name": "ARKO Nepal",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A sustainability-focused Nepali apparel brand producing handmade garments with ethical and women-led production practices.",
+      "main_platform": "Instagram",
+      "other_platforms": ["LinkedIn", "Facebook"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/arkonepal/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": "https://np.linkedin.com/company/arkonepal",
+        "linktree": null,
+        "other": null
+      },
+      "sources": ["https://np.linkedin.com/company/arkonepal"],
+      "followers": {
+        "main_platform_count": 9700,
+        "main_platform_label": "9.7K",
+        "total_estimated": 11000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "4-6x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "LinkedIn lists Instagram as official website instead of dedicated ecommerce platform."
+      },
+      "website_need_signals": [
+        "Instagram used as primary brand website",
+        "Sustainable fashion story not leveraged on own domain",
+        "No ecommerce checkout or catalog system"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong premium positioning and sustainability angle make it highly suitable for a modern branded ecommerce website."
+    },
+    {
+      "id": "BIZ_062",
+      "business_name": "Latasa Boutique",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A Pokhara-based women's boutique selling designer clothing and fashionwear through Facebook and physical retail presence.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": [
+        "https://www.worldwidephonebooks.com/NP/latasa-the-fashion-boutique-985-6033060"
+      ],
+      "followers": {
+        "main_platform_count": 5200,
+        "main_platform_label": "5.2K",
+        "total_estimated": 6000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No official website listed despite active delivery and social media operations."
+      },
+      "website_need_signals": [
+        "Facebook acting as primary web identity",
+        "No online catalog or ordering system",
+        "Delivery service handled manually"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": "+9779856033060",
+        "whatsapp": "+9779856033060",
+        "best_method": "Facebook Message"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong local recognition but digitally underserved with no centralized ecommerce experience."
+    },
+    {
+      "id": "BIZ_063",
+      "business_name": "Donnaz Boutique Pokhara",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A women's clothing and tailoring boutique in Pokhara handling customized fashion orders through social platforms.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram"],
+      "social_links": {
+        "instagram": null,
+        "facebook": "https://facebook.com/423170277742927",
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": [
+        "https://nepal.worldplaces.me/womens-clothing-stores-in-pokhara/53105429-donnaz-boutique-pokhara.html",
+        "https://www.cybo.com/NP-biz/donnaz-boutique"
+      ],
+      "followers": {
+        "main_platform_count": 7200,
+        "main_platform_label": "7.2K",
+        "total_estimated": 8000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "4-5x/week",
+      "website": {
+        "exists": false,
+        "url": "http://www.donnazboutique.com",
+        "quality_score": 2,
+        "quality_analysis": "Old website domain appears inactive; current business operations rely mainly on Facebook and Instagram."
+      },
+      "website_need_signals": [
+        "Inactive or abandoned website",
+        "Custom orders processed manually",
+        "Social media dependency for inquiries"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Established",
+      "contact": {
+        "email": "donnaz.collection@gmail.com",
+        "phone": "+9779856059171",
+        "whatsapp": "+9779856059171",
+        "best_method": "Facebook Message"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Already had web ambitions before; likely easier to convert into a full ecommerce client."
+    },
+    {
+      "id": "BIZ_064",
+      "business_name": "Maya Boutique",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A Pokhara boutique store specializing in women's fashion and custom boutique services.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram"],
+      "social_links": {
+        "instagram": null,
+        "facebook": "https://facebook.com/468433673639736",
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": [
+        "https://nepal.worldplaces.me/review/113163180-maya-boutique.html"
+      ],
+      "followers": {
+        "main_platform_count": 3100,
+        "main_platform_label": "3.1K",
+        "total_estimated": 3500
+      },
+      "engagement_quality": "Low",
+      "posting_frequency": "2-4x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No official website found; relies on Facebook and Instagram for customer acquisition."
+      },
+      "website_need_signals": [
+        "No digital product showcase",
+        "Boutique services depend on DMs",
+        "No ecommerce infrastructure"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Early-stage",
+      "contact": {
+        "email": null,
+        "phone": "+9779806530705",
+        "whatsapp": "+9779806530705",
+        "best_method": "Facebook Message"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 5,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Low",
+      "observations": "Smaller boutique but digitally underserved and highly dependent on social platforms."
+    },
+    {
+      "id": "BIZ_065",
+      "business_name": "Am Pm Handicrafts",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Handmade & Crafts",
+      "description": "A Pokhara handicrafts and leather goods store selling handmade local products and customized bags.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram"],
+      "social_links": {
+        "instagram": null,
+        "facebook": "https://www.facebook.com",
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": ["https://www.mapquest.com/np/am-pm-handicrafts-776001929"],
+      "followers": {
+        "main_platform_count": 4200,
+        "main_platform_label": "4.2K",
+        "total_estimated": 5000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "2-3x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Facebook used instead of a dedicated product catalog or ecommerce website."
+      },
+      "website_need_signals": [
+        "Customized products sold manually",
+        "Tourist-facing products without ecommerce",
+        "No international checkout capability"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": "+9779856036475",
+        "whatsapp": "+9779856036475",
+        "best_method": "Phone Call"
+      },
+      "founder_owner": "Dharmen",
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Medium",
+      "observations": "Tourism-driven handmade niche has strong SEO and export potential if digitized properly."
+    },
+    {
+      "id": "BIZ_066",
+      "business_name": "Bro Bakery Pokhara",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Food & Beverage",
+      "description": "A trendy bakery and cafe in Pokhara popular among young customers for cakes, pastries, and coffee.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/brobakery_pokhara/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": ["https://wanderlog.com/place/details/11988789/bro-bakery"],
+      "followers": {
+        "main_platform_count": 9200,
+        "main_platform_label": "9.2K",
+        "total_estimated": 10000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "5-6x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Instagram profile acts as official website and ordering system."
+      },
+      "website_need_signals": [
+        "No visible menu or pricing system online",
+        "Instagram-only branding",
+        "No online ordering or reservation system"
+      ],
+      "suggested_website_type": "Restaurant Menu Site",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": "+9779856045877",
+        "whatsapp": "+9779856045877",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Visually strong bakery brand with clear demand but poor digital ordering infrastructure."
+    },
+    {
+      "id": "BIZ_067",
+      "business_name": "Laprahouse",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A Pokhara-based ethical clothing and handloom brand focused on handmade woolen and cotton garments.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": "https://laprahouse.com"
+      },
+      "sources": ["https://laprahouse.com"],
+      "followers": {
+        "main_platform_count": 6000,
+        "main_platform_label": "6K",
+        "total_estimated": 7000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "2-4x/week",
+      "website": {
+        "exists": true,
+        "url": "https://laprahouse.com",
+        "quality_score": 5,
+        "quality_analysis": "Website exists but functions more like a catalog than a modern ecommerce brand experience."
+      },
+      "website_need_signals": [
+        "No advanced ecommerce experience",
+        "Limited storytelling and SEO optimization",
+        "Could benefit from modern conversion-focused design"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Established",
+      "contact": {
+        "email": "laprahouse@gmail.com",
+        "phone": "+9779856088432",
+        "whatsapp": "+9779856088432",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "Medium",
+      "payment_capacity": "High",
+      "observations": "Already digitally aware but website quality leaves room for a premium redesign pitch."
+    },
+    {
+      "id": "BIZ_068",
+      "business_name": "Jyapu's",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Handmade & Crafts",
+      "description": "A Kathmandu-based handcrafted bag and textile brand promoting handmade Nepali craftsmanship and women empowerment.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/jyapus/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": "https://www.jyapus.com.np/"
+      },
+      "sources": ["https://www.jyapus.com.np/"],
+      "followers": {
+        "main_platform_count": 11000,
+        "main_platform_label": "11K",
+        "total_estimated": 13000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "4-5x/week",
+      "website": {
+        "exists": true,
+        "url": "https://www.jyapus.com.np/",
+        "quality_score": 6,
+        "quality_analysis": "Website exists but lacks deeper ecommerce optimization and international conversion systems."
+      },
+      "website_need_signals": [
+        "Website lacks premium conversion flow",
+        "No storytelling-focused landing experience",
+        "International handmade niche underleveraged"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Established",
+      "contact": {
+        "email": "houseofjyapunepal@gmail.com",
+        "phone": "+9779803888178",
+        "whatsapp": "+9779803888178",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "High",
+      "observations": "Strong handcrafted branding and export potential make this suitable for premium ecommerce upgrades."
+    },
+    {
+      "id": "BIZ_069",
+      "business_name": "Wardrobe Ethnic Wear",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Clothing & Fashion",
+      "description": "An Instagram-first ethnic clothing store operating online through social media with delivery-based sales.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/wardrobe_ethnicwear/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": ["https://www.reddit.com/r/Nepal/comments/1dfo8sp"],
+      "followers": {
+        "main_platform_count": 4000,
+        "main_platform_label": "4K",
+        "total_estimated": 4500
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "Daily",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No official website or buyer protection infrastructure."
+      },
+      "website_need_signals": [
+        "Instagram-only commerce",
+        "No customer trust infrastructure",
+        "No order tracking or ecommerce protections"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 5,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Low",
+      "observations": "Trust issues discussed publicly online indicate strong need for a proper ecommerce system and credibility infrastructure."
+    },
+    {
+      "id": "BIZ_070",
+      "business_name": "Baizani",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Jewelry & Accessories",
+      "description": "A curated lifestyle and jewelry brand offering necklaces and gifting products with nationwide delivery in Nepal.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/baizani.np/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": "https://baizani.com/"
+      },
+      "sources": ["https://baizani.com/"],
+      "followers": {
+        "main_platform_count": 8700,
+        "main_platform_label": "8.7K",
+        "total_estimated": 10000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "4-6x/week",
+      "website": {
+        "exists": true,
+        "url": "https://baizani.com/",
+        "quality_score": 7,
+        "quality_analysis": "Website exists and is functional but still heavily social-media dependent for brand discovery."
+      },
+      "website_need_signals": [
+        "Heavy Instagram dependence despite having a website",
+        "Could improve SEO and storytelling",
+        "Lifestyle branding not fully leveraged"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": "[email protected]",
+        "phone": "+9779766049401",
+        "whatsapp": "+9779766049401",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "High",
+      "observations": "One of the stronger lifestyle brands in the dataset and a good candidate for advanced ecommerce optimization and SEO."
     }
   ],
   "analysis": {
