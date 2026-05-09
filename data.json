@@ -484,7 +484,7 @@
         },
         {
             "id": "BIZ_010",
-            "business_name": "Soohme",
+            "business_name": "Soohmmme",
             "country": "Nepal",
             "city_region": "Kathmandu",
             "industry_niche": "Handmade & Crafts",
@@ -512,7 +512,7 @@
                 "exists": false,
                 "url": null,
                 "quality_score": null,
-                "quality_analysis": "No website found despite significant following. Engagement rate of 0.4%. No e-commerce presence beyond Instagram."
+                "quality_analysis": null
             },
             "website_need_signals": [
                 "47K+ followers but no website",

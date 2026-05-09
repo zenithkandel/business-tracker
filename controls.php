@@ -53,23 +53,21 @@ if ($method === 'GET') {
 if ($method === 'POST') {
     $rawInput = file_get_contents('php://input');
 
-    $input = null;
-    $isFormData = false;
-
-    if (!empty($rawInput) && strpos($rawInput, '=') !== false) {
-        parse_str($rawInput, $input);
-        $isFormData = true;
-    } else if (!empty($rawInput)) {
-        $input = json_decode($rawInput, true);
-    }
-
-    if ($input === null && !empty($rawInput)) {
+    if (trim($rawInput) === '' || $rawInput === false || $rawInput === null) {
         http_response_code(400);
-        echo json_encode(['error' => 'Invalid JSON: ' . json_last_error_msg()]);
+        echo json_encode(['error' => 'Empty request body']);
         exit;
     }
 
-    $action = isset($input['action']) ? $input['action'] : (isset($_POST['action']) ? $_POST['action'] : '');
+    $input = json_decode($rawInput, true);
+
+    if ($input === null) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Invalid JSON: ' . json_last_error_msg() . ' | Raw: ' . substr($rawInput, 0, 100)]);
+        exit;
+    }
+
+    $action = isset($input['action']) ? $input['action'] : '';
 
     if (empty($action)) {
         http_response_code(400);

@@ -844,20 +844,12 @@ function showToast(msg, type) {
 function apiCall(payload, callback) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', API, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
         let data;
         try { data = JSON.parse(xhr.responseText); } catch (e) { data = null; }
         callback(data);
     };
     xhr.onerror = function () { callback(null); };
-
-    if (typeof payload === 'object' && !(payload instanceof FormData)) {
-        const formData = new FormData();
-        for (const key in payload) {
-            formData.append(key, typeof payload[key] === 'object' ? JSON.stringify(payload[key]) : payload[key]);
-        }
-        xhr.send(formData);
-    } else {
-        xhr.send(payload);
-    }
+    xhr.send(JSON.stringify(payload));
 }
