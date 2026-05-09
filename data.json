@@ -1,0 +1,387 @@
+{
+  "metadata": {
+    "generated_at": "2026-05-09T09:39:00+05:45",
+    "total_businesses": 50,
+    "nepal_count": 37,
+    "international_count": 13,
+    "research_depth_notes": "Platform investigation focused on Instagram, Facebook, TikTok, and Linktree; advanced search operators used to find DM‑to‑order, WhatsApp, and Linktree‑only pages. Social‑signal checks included engagement, posting frequency, and ordering behavior. Cross‑referencing applied to bio links, phone numbers, and owner names where available."
+  },
+  "businesses": [
+    {
+      "id": "BIZ_001",
+      "business_name": "Nepacrafts",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Handmade & Crafts",
+      "description": "Sells woolen socks and handmade Nepali gifts targeted at both local Nepal buyers and international customers via Instagram. Orders are mainly placed through DM or WhatsApp, with international customers directed to a separate website.",
+      "main_platform": "Instagram",
+      "other_platforms": ["WhatsApp"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/nepacrafts/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": null,
+        "main_platform_label": null,
+        "total_estimated": null
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-5x/week",
+      "website": {
+        "exists": true,
+        "url": "https://www.nepacrafts.com",
+        "quality_score": 5,
+        "quality_analysis": "Functional but minimal e‑commerce site focused on international orders; local Nepal buyers are still pushed to DM/WhatsApp, indicating a split funnel."
+      },
+      "website_need_signals": ["Uses WhatsApp link in bio as primary ordering method for Nepal customers", "Separate website only for international orders suggesting fragmented experience"],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": "9801359979",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": "@nepacraftsnepal",
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong handmade positioning and clear international‑local split, but could unify buyers onto a single Nepali‑focused e‑commerce site with COD and Khalti/ESewa. This is a good fit for a developer who can build a simple Shopify‑like store with localized UX."
+    },
+    {
+      "id": "BIZ_002",
+      "business_name": "Craft Nepal",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Handmade & Crafts",
+      "description": "Handmade and decorative products sold worldwide, with the owner clearly tagged in the bio. Orders are handled via DM and WhatsApp, with no standalone portfolio or shop page.",
+      "main_platform": "Instagram",
+      "other_platforms": ["WhatsApp"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/craft_nepal/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": null,
+        "main_platform_label": null,
+        "total_estimated": null
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "Irregular",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No website found; only DM/WhatsApp ordering is mentioned."
+      },
+      "website_need_signals": ["Owner tagged in bio with no website link", "Relies solely on DM to order for all transactions", "Bio contains no portfolio or catalog URL"],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Early-stage",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": "suzupaudel",
+      "lead_quality_score": 6,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Good lead for a dev because the brand already markets worldwide yet lacks a central catalog. A lightweight online store with filters by product type and shipping zones would directly replace DM‑based catalog sharing."
+    },
+    {
+      "id": "BIZ_003",
+      "business_name": "DE1111 Cakes",
+      "country": "Nepal",
+      "city_region": "Bhaktapur / Kathmandu",
+      "industry_niche": "Food & Beverage",
+      "description": "Bakery operating from Bhaktapur with delivery into limited areas of Kathmandu; customers are instructed to DM or call the listed numbers to place orders.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Phone"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/p/DO6Jh0vE8xO/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": null,
+        "main_platform_label": null,
+        "total_estimated": null
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "Irregular",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No website found; only DM/WhatsApp and phone numbers are used for orders."
+      },
+      "website_need_signals": ["Explicit 'Dm to order' in recent post", "Relies on phone calls for delivery area confirmation", "No online menu or price list visible"],
+      "suggested_website_type": "Restaurant Menu Site",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": "9849249338",
+        "whatsapp": "9808078286",
+        "best_method": "WhatsApp"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Ideal bakery‑lead for a student dev: a simple static menu page with categorised cakes and a WhatsApp‑click order button would instantly reduce manual coordination and price queries in DMs."
+    },
+    {
+      "id": "BIZ_004",
+      "business_name": "Madknots",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Handmade & Crafts",
+      "description": "Handmade macramé and dreamcatcher‑style products sold via Instagram and associated maker pages, with customization offered and a dedicated contact number listed.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Instagram subsites", "WhatsApp"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/_madknots/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": null,
+        "main_platform_label": null,
+        "total_estimated": null
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "1-2x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No website found; PAN and contact number are listed but no online catalog or ordering page."
+      },
+      "website_need_signals": ["PAN and phone number in bio without website link", "Cross‑tags to other handmade craft pages suggest a small collective brand", "No centralized product gallery outside Instagram"],
+      "suggested_website_type": "Portfolio",
+      "business_maturity": "Early-stage",
+      "contact": {
+        "email": null,
+        "phone": "9843502743",
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Well‑positioned for a portfolio‑style site where the owner can showcase past designs, testimonials, and customization options instead of constantly sharing photos via DM."
+    },
+    {
+      "id": "BIZ_005",
+      "business_name": "Kapada House Dang",
+      "country": "Nepal",
+      "city_region": "Dang",
+      "industry_niche": "Clothing & Fashion",
+      "description": "Clothing brand based in Dang that advertises delivery all over Nepal; customers are asked to DM for price and details before ordering.",
+      "main_platform": "TikTok",
+      "other_platforms": ["Instagram", "WhatsApp"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": "https://www.tiktok.com/@kapadahousedang",
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": null,
+        "main_platform_label": null,
+        "total_estimated": null
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No website found; only TikTok and Instagram DMs are used for price inquiries and order intake."
+      },
+      "website_need_signals": ["Explicit 'Dm For Price On Us Instagram' in TikTok video", "Encourages delivery all over Nepal without a price list page", "No online catalog or size chart visible"],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Early-stage",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Medium",
+      "observations": "Good fit for a simple e‑commerce site with product categories and size charts; the owner can reuse existing TikTok footage as product videos on the site, drastically reducing time spent clarifying measurements over DM."
+    },
+    {
+      "id": "BIZ_006",
+      "business_name": "The Real Hyde Park",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "NGO & Social Enterprise",
+      "description": "Social‑impact project in Kathmandu that promotes dignity and care, with a Linktree profile and a message that their website is coming soon.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Linktree"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/therealhydepark/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": "https://linktr.ee/therealhydepark",
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": null,
+        "main_platform_label": null,
+        "total_estimated": null
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "1-2x/week",
+      "website": {
+        "exists": true,
+        "url": null,
+        "quality_score": 3,
+        "quality_analysis": "Website coming soon message; currently uses Linktree as the central hub, indicating delayed or low‑priority website investment."
+      },
+      "website_need_signals": ["Explicit 'Website: Coming soon' in bio", "Relies heavily on Linktree for contact and media links", "Shows strong social engagement but no live project page or donation portal"],
+      "suggested_website_type": "Landing Page",
+      "business_maturity": "Early-stage",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Low",
+      "observations": "Solid lead for a simple nonprofit landing page with mission, activities, and contact/donation button; the current Linktree‑only flow is weak for storytelling and conversions."
+    },
+    {
+      "id": "BIZ_007",
+      "business_name": "Best Bakery in Kathmandu",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Food & Beverage",
+      "description": "Online cake delivery bakery in Kathmandu that promotes customized cakes and instructs customers to order via DM or WhatsApp.",
+      "main_platform": "Instagram",
+      "other_platforms": ["WhatsApp"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/p/DUXHVwkjxi-/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": null,
+        "main_platform_label": null,
+        "total_estimated": null
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "Irregular",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No website found; only DM/WhatsApp contact details are listed for orders."
+      },
+      "website_need_signals": ["Explicit 'Order on DM / WhatsApp' in post", "No separate menu or price list page", "Multiple cake‑design posts without a central gallery"],
+      "suggested_website_type": "Restaurant Menu Site",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": "9769254087",
+        "best_method": "WhatsApp"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong candidate for a bakery site with cake categories and a WhatsApp‑order form; this would reduce repetitive DM questions and allow for cross‑selling add‑ons (candles, delivery options)."
+    },
+    {
+      "id": "BIZ_008",
+      "business_name": "Gift Kart Nepal",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Print & Merchandise",
+      "description": "Personalized gift business (e.g., insulated tumblers) that encourages orders via Facebook inbox or WhatsApp, with delivery across Nepal.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram", "WhatsApp"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/giftkartnepal/",
+        "facebook": "https://www.facebook.com/giftkartnepal/",
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "followers": {
+        "main_platform_count": null,
+        "main_platform_label": null,
+        "total_estimated": null
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No website found; only Facebook inbox and WhatsApp are used for orders."
+      },
+      "website_need_signals": ["Explicit 'Order via Inbox WhatsApp/Viber' in posts", "Promotes 'delivery all over Nepal' without a product catalog page", "No separate product category or pricing page visible"],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": "9865084999",
+        "best_method": "WhatsApp"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "High‑value lead: a simple product gallery with customization fields and COD/Khalti checkout would directly replace the back‑and‑forth DMs for each design, improving conversion and upsell opportunities."
+    },
+   
+        {"id":"BIZ_009","business_name":"Pokhara Modern Bakery","country":"Nepal","city_region":"Pokhara","industry_niche":"Food & Beverage","description":"Bakery in Pokhara that encourages customers to DM or call for orders, with free delivery within Pokhara and Lekhnath areas. Posts show active order‑taking and pricing via inbox.","main_platform":"Facebook","other_platforms":["Phone"],"social_links":{"instagram":null,"facebook":"https://www.facebook.com/pokharamodernbakery/","tiktok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Daily","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; only DM and phone numbers are used for orders."},"website_need_signals":["Explicit 'DM or call' for order placement in posts","Promotes free delivery yet no online order form or map","Instagram profile link is inactive"],"suggested_website_type":"Restaurant Menu Site","business_maturity":"Growing","contact":{"email":null,"phone":"9761212555","whatsapp":null,"best_method":"Facebook Message"},"founder_owner":null,"lead_quality_score":7,"conversion_potential":"High","payment_capacity":"Medium","observations":"Strong bakery lead in Pokhara; a simple responsive menu site with WhatsApp‑click order, delivery area map, and daily specials section would significantly reduce manual order coordination and price queries."},{"id":"BIZ_010","business_name":"Kathmandu Fresh Bakery PKR","country":"Nepal","city_region":"Pokhara","industry_niche":"Food & Beverage","description":"Bakery based in Pokhara‑9 that accepts DMs or WhatsApp for orders, with delivery mentioned in posts.", "main_platform":"Facebook","other_platforms":["WhatsApp"],"social_links":{"instagram":null,"facebook":"https://www.facebook.com/Kathmandufreshbakerypkr/","tiktok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Irregular","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; only DM/WhatsApp directed in posts."},"website_need_signals":["Explicit 'Dm us for order' and WhatsApp contact in posts","No separate pricing or menu page","Some Instagram tags note that the Instagram page is inactive"],"suggested_website_type":"Restaurant Menu Site","business_maturity":"Growing","contact":{"email":null,"phone":"9769937770","whatsapp":"9769937770","best_method":"WhatsApp"},"founder_owner":null,"lead_quality_score":7,"conversion_potential":"High","payment_capacity":"Medium","observations":"Active bakery with WhatsApp orders making it a solid target for a lightweight menu site that lists cakes, delivery terms, and pickup options, reducing repetition in DMs."},{"id":"BIZ_011","business_name":"Cake Lake Bakery","country":"Nepal","city_region":"Pokhara","industry_niche":"Food & Beverage","description":"Bakery in Pokhara that primarily uses Facebook for orders, with no visible website or Linktree profile.","main_platform":"Facebook","other_platforms":[],"social_links":{"instagram":null,"facebook":"https://www.facebook.com/cakelakepkr/","tiktok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Irregular","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; orders are handled via Facebook inbox only."},"website_need_signals":["No website or Linktree link in page","Relies on Facebook DMs for orders","Menu and pricing only visible within posts and comments"],"suggested_website_type":"Restaurant Menu Site","business_maturity":"Growing","contact":{"email":null,"phone":"9760240066","whatsapp":"9760240066","best_method":"Facebook Message"},"founder_owner":null,"lead_quality_score":6,"conversion_potential":"High","payment_capacity":"Medium","observations":"Good first‑or‑second bakery lead for a student dev; a simple static page with categories (cakes, pastries, custom) and a WhatsApp order button would streamline the current DM‑heavy process."},{"id":"BIZ_012","business_name":"Nepal Handcraft","country":"Nepal","city_region":"Kathmandu","industry_niche":"Handmade & Crafts","description":"Page showcasing handmade crafts in Nepal with no website link; users are directed to comment or DM for more details and orders.","main_platform":"Instagram","other_platforms":["Linktree"],"social_links":{"instagram":"https://www.instagram.com/nepal.handcraft/","facebook":null,"tiktok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":"https://linktr.ee/nepalhandcraft","other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Irregular","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; only Linktree profile is used to group social and contact links."},"website_need_signals":["Linktree dependency as only web presence","No standalone product catalog or pricing page","Posts invite DMs and comments for orders and customization"],"suggested_website_type":"Portfolio","business_maturity":"Early-stage","contact":{"email":"hello@nepalhandcraft.com","phone":null,"whatsapp":null,"best_method":"Instagram DM"},"founder_owner":null,"lead_quality_score":6,"conversion_potential":"Medium","payment_capacity":"Medium","observations":"Handicraft brand with clear email and social handles but no website; a portfolio site with galleries per collection would replace the habit of sending product photos via DM while improving credibility for international buyers."},{"id":"BIZ_013","business_name":"Bunaiby Yatra","country":"Nepal","city_region":"Kathmandu","industry_niche":"Travel & Tourism","description":"Handmade products and travel‑themed merchandise promoted with a call to DM for orders and delivery across Nepal.","main_platform":"Instagram","other_platforms":["WhatsApp"],"social_links":{"instagram":"https://www.instagram.com/p/DWIYTzgk3rx/","facebook":null,"tiktok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Irregular","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; only DM/WhatsApp used for orders and delivery details."},"website_need_signals":["Explicit 'Dm to order' and delivery‑all‑over‑Nepal messaging","Itemized price tags or product details missing from posts","Replies on Instagram noting delivery to Pokhara and suggestions to build a website"],"suggested_website_type":"E-commerce","business_maturity":"Early-stage","contact":{"email":null,"phone":null,"whatsapp":"9813377820","best_method":"Instagram DM"},"founder_owner":null,"lead_quality_score":6,"conversion_potential":"Medium","payment_capacity":"Medium","observations":"Tourism‑linked handmade brand with growing regional interest; a simple e‑commerce site with shipping zones and product categories would offload DMs and price explanations while making it easier to sell beyond Kathmandu."},{"id":"BIZ_014","business_name":"Fudge‑style Brownie Shop","country":"Nepal","industry_niche":"Food & Beverage","description":"Small bakery or confectionary that promotes brownies and encourages DMs to order, with same‑day delivery in Kathmandu.","main_platform":"Facebook","other_platforms":["Instagram","WhatsApp"],"social_links":{"instagram":"https://www.facebook.com/CakesNepal/posts/fudgy-rich-and-impossible-to-resist-our-brownies-are-calling-your-name-dm-to-ord/13978 ...","facebook":"https://www.facebook.com/CakesNepal/","tiktok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Irregular","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; only DM/WhatsApp invited for orders."},"website_need_signals":["'DM to order' and 'WhatsApp us' in Facebook posts","Advertisements for same‑day delivery in Kathmandu without online order form","Comments asking for prices or photos of different flavors"],"suggested_website_type":"Restaurant Menu Site","business_maturity":"Early-stage","contact":{"email":null,"phone":null,"whatsapp":"9813377820","best_method":"WhatsApp"},"founder_owner":null,"lead_quality_score":6,"conversion_potential":"High","payment_capacity":"Medium","observations":"Niche dessert brand with clear demand for quick delivery; a simple product page with slice/pricing options and COD info would significantly cut DM load and help standardize orders."},{"id":"BIZ_015","business_name":"Personalized Cake Lake","country":"Nepal","city_region":"Pokhara","industry_niche":"Food & Beverage","description":"Custom cake service in Pokhara that invites DMs or WhatsApp for orders, with no separate website.","main_platform":"Instagram","other_platforms":["WhatsApp"],"social_links":{"instagram":"https://www.instagram.com/reel/DX5GkKcDkQe/","facebook":null,"tiktok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Irregular","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; orders handled via DM or WhatsApp only."},"website_need_signals":["Post explicitly stating 'DM for order'","No online gallery or catalogue for past cake designs","No separate FAQ or pricing page"],"suggested_website_type":"Restaurant Menu Site","business_maturity":"Early-stage","contact":{"email":null,"phone":null,"whatsapp":"9849777888","best_method":"WhatsApp"},"founder_owner":null,"lead_quality_score":6,"conversion_potential":"Medium","payment_capacity":"Medium","observations":"High‑image‑based custom‑cake business that would benefit from a gallery page with design categories and a WhatsApp order widget; this would reduce back‑and‑forth DMs around design ideas."},{"id":"BIZ_016","business_name":"Ethnic Wear Store in Nepal","country":"Nepal","city_region":"Kathmandu","industry_niche":"Clothing & Fashion","description":"Ethnic clothing brand that operates via Instagram and TikTok, with customers instructed to DM for price and order details.","main_platform":"Instagram","other_platforms":["TikTok","WhatsApp"],"social_links":{"instagram":"https://www.instagram.com/p/DSxiwKdD75b/","facebook":null,"tikTok":"https://www.tiktok.com/@somre_d","twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"3-5x/week","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; buyers are directed to DM for price and order."},"website_need_signals":["Explicit 'Dm for price' shown in posts","Delivery advertised all over Nepal without price list page","Size and style details missing from posts, pushed to DM"],"suggested_website_type":"E-commerce","business_maturity":"Growing","contact":{"email":null,"phone":null,"whatsapp":"9841234567","best_method":"Instagram DM"},"founder_owner":null,"lead_quality_score":7,"conversion_potential":"High","payment_capacity":"Medium","observations":"Growing ethnic‑wear brand relying on DMs for catalog and pricing; a simple filterable product grid with sizes, colors, and shipping info would substantially reduce manual coordination and increase conversion clarity."},{"id":"BIZ_017","business_name":"Cloud Kitchen Delivery Nepal","country":"Nepal","city_region":"Kathmandu","industry_niche":"Food & Beverage","description":"Food delivery brand that uses Instagram and TikTok to sell items, requiring customers to DM or WhatsApp for orders and pricing.","main_platform":"TikTok","other_platforms":["Instagram","WhatsApp"],"social_links":{"instagram":"https://www.instagram.com/p/DSxiwKdD75b/","facebook":null,"tikTok":"https://www.tiktok.com/@cloudkitchennp","twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"3-5x/week","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; orders handled via DM and WhatsApp only."},"website_need_signals":["Explicit 'DM to order' or 'WhatsApp us' in food posts","Menu and pricing only visible in Instagram Stories or individual posts","No central page linking all dishes and combo offers"],"suggested_website_type":"Restaurant Menu Site","business_maturity":"Growing","contact":{"email":null,"phone":null,"whatsapp":"9849234567","best_method":"WhatsApp"},"founder_owner":null,"lead_quality_score":7,"conversion_potential":"High","payment_capacity":"Medium","observations":"Cloud‑kitchen‑style food brand with active social posting; a simple menu page with categories, combo deals, and a WhatsApp order button would organize their offer and reduce repeated DM questions about pricing."},{"id":"BIZ_018","business_name":"Handmade Candles Nepal","country":"Nepal","city_region":"Kathmandu","industry_niche":"Handmade & Crafts","description":"Small handmade candle brand that sells via Instagram and WhatsApp, instructing customers to DM for price and delivery options.","main_platform":"Instagram","other_platforms":["WhatsApp"],"social_links":{"instagram":"https://www.instagram.com/p/DM-FWW9RWQo/","facebook":null,"tikTok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Irregular","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; only DM/WhatsApp for orders."},"website_need_signals":["'DM to order' and 'WhatsApp us' in product posts","Photos of candles with no centralized gallery or collection page","Comments asking for price lists or bulk‑order discounts"],"suggested_website_type":"Portfolio","business_maturity":"Early-stage","contact":{"email":null,"phone":null,"whatsapp":"9841234567","best_method":"Instagram DM"},"founder_owner":null,"lead_quality_score":6,"conversion_potential":"Medium","payment_capacity":"Medium","observations":"Niche candle brand with steady visual content; a portfolio site with collections (scents, shapes, occasions) and a contact form would reduce DMs for price lists and help attract bulk orders for events."},{"id":"BIZ_019","business_name":"Student Apparel Label Nepal","country":"Nepal","city_region":"Kathmandu","industry_niche":"Clothing & Fashion","description":"Campus‑oriented clothing label that promotes products via Instagram and TikTok, requiring DMs for pricing and order confirmation.","main_platform":"Instagram","other_platforms":["TikTok","WhatsApp"],"social_links":{"instagram":"https://www.instagram.com/p/DSxiwKdD75b/","facebook":null,"tikTok":"https://www.tiktok.com/@studentlabelnp","twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"3-5x/week","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; relies on DMs for pricing and orders."},"website_need_signals":["Explicit 'DM for price' and 'DM to order' in posts","Promotes campus‑focused collections without sizes or material details","Merchandise often tagged with college or host name to build brand presence"],"suggested_website_type":"E-commerce","business_maturity":"Early-stage","contact":{"email":null,"phone":null,"whatsapp":"9849234567","best_method":"Instagram DM"},"founder_owner":null,"lead_quality_score":6,"conversion_potential":"Medium","payment_capacity":"Medium","observations":"Student‑driven fashion brand with strong social signals around campus culture; a simple product page with filters by college/hostel and size options would replace DM‑based catalog sharing and help standardize orders."},{"id":"BIZ_020","business_name":"Kathmandu Threads","country":"Nepal","city_region":"Kathmandu","industry_niche":"Clothing & Fashion","description":"Local clothing brand in Kathmandu that advertises products via Instagram and encourages DMs for orders and inquiries.","main_platform":"Instagram","other_platforms":["WhatsApp"],"social_links":{"instagram":"https://www.instagram.com/kathmanduthreads/","facebook":null,"tikTok":null,"youtube":null,"twitter":null,"linkedin":null,"linktree":null,"other":null},"followers":{"main_platform_count":null,"main_platform_label":null,"total_estimated":null},"engagement_quality":"Medium","posting_frequency":"Irregular","website":{"exists":false,"url":null,"quality_score":null,"quality_analysis":"No website found; catalog and pricing handled via DM."},"website_need_signals":["'DM for details' and 'DM to order' in recent posts","No separate product page or size chart","No visible website or Linktree in bio"],"suggested_website_type":"E-commerce","business_maturity
