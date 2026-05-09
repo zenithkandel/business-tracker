@@ -2593,6 +2593,536 @@
       "conversion_potential": "High",
       "payment_capacity": "Medium",
       "observations": "Event planner using forums and Instagram for marketing but no website. A portfolio website with service packages would professionalize their brand and increase conversion."
+    },
+    {
+      "id": "BIZ_051",
+      "business_name": "Kathmanducrafts",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Handmade & Crafts",
+      "description": "A Nepal-based handcrafted products brand selling handmade cultural items internationally through Instagram, WhatsApp, and social media channels.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook", "TikTok", "WhatsApp"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/kathmanducrafts/",
+        "facebook": "https://www.facebook.com/kathmanducrafts/",
+        "tiktok": "https://www.tiktok.com/",
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": "https://linktr.ee/kathmanducrafts",
+        "other": null
+      },
+      "sources": ["https://linktr.ee/kathmanducrafts"],
+      "followers": {
+        "main_platform_count": 6200,
+        "main_platform_label": "6.2K",
+        "total_estimated": 7000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Uses Linktree and WhatsApp as sales infrastructure instead of a dedicated website."
+      },
+      "website_need_signals": [
+        "Relies on WhatsApp and Instagram for international orders",
+        "No centralized product catalog",
+        "Uses Linktree as makeshift website"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": "+61499926276",
+        "whatsapp": "+61499926276",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong handmade export potential but lacks owned digital infrastructure and online checkout."
+    },
+    {
+      "id": "BIZ_052",
+      "business_name": "Anzee's Cafe and Bakery",
+      "country": "Nepal",
+      "city_region": "Dharan",
+      "industry_niche": "Food & Beverage",
+      "description": "A bakery and cafe in Dharan popular for cakes and baked goods, operating mainly through social media and phone orders.",
+      "main_platform": "Facebook",
+      "other_platforms": ["Instagram"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": [
+        "https://www.worldwidephonebooks.com/NP/anzees-cafe-and-bakery-982-9348084"
+      ],
+      "followers": {
+        "main_platform_count": 4000,
+        "main_platform_label": "4K",
+        "total_estimated": 4000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "2-4x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "No official website found; customers directed to Facebook and phone ordering."
+      },
+      "website_need_signals": [
+        "No online ordering system",
+        "Delivery orders handled manually",
+        "No digital menu or ordering portal"
+      ],
+      "suggested_website_type": "Restaurant Menu Site",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": "+977 9829348084",
+        "whatsapp": null,
+        "best_method": "Phone Call"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Medium",
+      "observations": "Strong local bakery demand but lacks modern ordering and menu infrastructure."
+    },
+    {
+      "id": "BIZ_053",
+      "business_name": "Zeeta's Boutique",
+      "country": "Nepal",
+      "city_region": "Dharan",
+      "industry_niche": "Clothing & Fashion",
+      "description": "Designer boutique specializing in bridal wear, custom designs, and partywear with strong Instagram-driven sales.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/zeetas_boutique_official",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": [
+        "https://www.findglocal.com/NP/Dharan/169872980093971/Zeeta%27s-Boutique"
+      ],
+      "followers": {
+        "main_platform_count": 11000,
+        "main_platform_label": "11K",
+        "total_estimated": 12000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "4-6x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Instagram used as primary web presence instead of an ecommerce or portfolio website."
+      },
+      "website_need_signals": [
+        "Instagram as official website",
+        "Custom bridal orders handled manually",
+        "No online catalog or appointment system"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Established",
+      "contact": {
+        "email": null,
+        "phone": "+9779814331314",
+        "whatsapp": "+9779814331314",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": "Zeeta Gurung",
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong bridal niche with international potential but lacks premium digital presentation."
+    },
+    {
+      "id": "BIZ_054",
+      "business_name": "AblangCrafto",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Handmade & Crafts",
+      "description": "A handcrafted Nepali clothing and decor brand offering pashmina, hemp, wool, and eco-friendly handmade products.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook", "TikTok", "WhatsApp"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/ablangcrafto/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": "https://linktr.ee/ablangcrafto",
+        "other": null
+      },
+      "sources": ["https://linktr.ee/ablangcrafto"],
+      "followers": {
+        "main_platform_count": 5400,
+        "main_platform_label": "5.4K",
+        "total_estimated": 6200
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Uses Linktree and social channels instead of a dedicated ecommerce platform."
+      },
+      "website_need_signals": [
+        "No centralized online store",
+        "Handmade products not searchable on Google",
+        "Instagram and WhatsApp dependency"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": "ablangnepalcrafts@gmail.com",
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Eco-friendly branding and handmade niche are strong but hidden behind social-only infrastructure."
+    },
+    {
+      "id": "BIZ_055",
+      "business_name": "Bakery The GRG Udhyog",
+      "country": "Nepal",
+      "city_region": "Pokhara",
+      "industry_niche": "Food & Beverage",
+      "description": "A Pokhara bakery known for custom cakes and online pre-orders through Instagram with delivery services.",
+      "main_platform": "Instagram",
+      "other_platforms": [],
+      "social_links": {
+        "instagram": "https://www.instagram.com/",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": ["https://zaubee.com/biz/bakery-the-grg-udhyog-jh2zygwt"],
+      "followers": {
+        "main_platform_count": 4800,
+        "main_platform_label": "4.8K",
+        "total_estimated": 4800
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-4x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Customers place cake orders via Instagram and phone without online ordering."
+      },
+      "website_need_signals": [
+        "Instagram pre-orders only",
+        "No digital cake customization system",
+        "No ecommerce checkout"
+      ],
+      "suggested_website_type": "Restaurant Menu Site",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": null,
+        "phone": "061-590519",
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Medium",
+      "observations": "Visual bakery products are highly suitable for online ordering and SEO-driven discovery."
+    },
+    {
+      "id": "BIZ_056",
+      "business_name": "Oodni The Boutique",
+      "country": "Nepal",
+      "city_region": "Lalitpur",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A women's boutique and bridal wear store in Lalitpur using social media as its primary digital identity.",
+      "main_platform": "Instagram",
+      "other_platforms": ["TikTok", "Facebook", "Pinterest"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": "https://www.tiktok.com/",
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": "Pinterest"
+      },
+      "sources": [
+        "https://www.worldwidephonebooks.com/NP/oodni-the-boutique-01-5180327"
+      ],
+      "followers": {
+        "main_platform_count": 13000,
+        "main_platform_label": "13K",
+        "total_estimated": 16000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "4-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "TikTok listed as official website instead of dedicated domain."
+      },
+      "website_need_signals": [
+        "No ecommerce infrastructure",
+        "Social profiles used as main web identity",
+        "No booking or catalog system"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Established",
+      "contact": {
+        "email": null,
+        "phone": "01-5180327",
+        "whatsapp": null,
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": "Sharon Shakya",
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Established fashion boutique with strong offline presence but poor owned digital branding."
+    },
+    {
+      "id": "BIZ_057",
+      "business_name": "KhaliKhutta",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Handmade & Crafts",
+      "description": "A handmade Nepali natural products brand selling eco-friendly handmade items globally through Etsy and Instagram.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook", "Etsy"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": "https://twitter.com/",
+        "linkedin": null,
+        "linktree": null,
+        "other": "https://www.etsy.com/no-en/shop/KhaliKhutta"
+      },
+      "sources": ["https://www.etsy.com/no-en/shop/KhaliKhutta"],
+      "followers": {
+        "main_platform_count": 9000,
+        "main_platform_label": "9K",
+        "total_estimated": 12000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "2-4x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Operates mainly through Etsy marketplace rather than own branded ecommerce website."
+      },
+      "website_need_signals": [
+        "Marketplace dependency",
+        "No independent ecommerce brand site",
+        "Strong storytelling not leveraged on own domain"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Established",
+      "contact": {
+        "email": null,
+        "phone": null,
+        "whatsapp": null,
+        "best_method": "Etsy Message"
+      },
+      "founder_owner": "Prabighya Basnet and Dave Smith",
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "High",
+      "observations": "Already validated internationally via Etsy; likely ready for premium standalone brand website."
+    },
+    {
+      "id": "BIZ_058",
+      "business_name": "Sunil Cashmere",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A Kathmandu-based cashmere and women's fashion business formerly known as NPI Collection.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": [
+        "https://www.worldwidephonebooks.com/NP/npi-collection-pvt-ltd-01-4523560"
+      ],
+      "followers": {
+        "main_platform_count": 4500,
+        "main_platform_label": "4.5K",
+        "total_estimated": 5000
+      },
+      "engagement_quality": "Low",
+      "posting_frequency": "2-3x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Old domain no longer active; currently relies on Facebook and Instagram."
+      },
+      "website_need_signals": [
+        "Lost old website presence",
+        "No ecommerce catalog",
+        "Fashion exports not digitally optimized"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Established",
+      "contact": {
+        "email": null,
+        "phone": "01-4523560",
+        "whatsapp": null,
+        "best_method": "Phone Call"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 6,
+      "conversion_potential": "Medium",
+      "payment_capacity": "Medium",
+      "observations": "Previously had a website but lost digital continuity; good candidate for rebranding."
+    },
+    {
+      "id": "BIZ_059",
+      "business_name": "Babal Wears",
+      "country": "Nepal",
+      "city_region": "Kathmandu",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A rapidly growing Nepal-made clothing brand delivering unisex apparel nationwide through Instagram.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/babalwears",
+        "facebook": null,
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": null
+      },
+      "sources": ["https://ekkais.com/biz/babal-wears/"],
+      "followers": {
+        "main_platform_count": 14000,
+        "main_platform_label": "14K",
+        "total_estimated": 15000
+      },
+      "engagement_quality": "High",
+      "posting_frequency": "5-6x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Instagram listed as official website despite growing nationwide clothing brand."
+      },
+      "website_need_signals": [
+        "Nationwide clothing sales without ecommerce",
+        "Instagram-only ordering",
+        "Growing brand without owned digital infrastructure"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": "[email protected]",
+        "phone": "+9779818916410",
+        "whatsapp": "+9779818916410",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 8,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "One of the stronger ecommerce prospects due to active growth and nationwide delivery."
+    },
+    {
+      "id": "BIZ_060",
+      "business_name": "Siyo Nepal",
+      "country": "Nepal",
+      "city_region": "Lalitpur",
+      "industry_niche": "Clothing & Fashion",
+      "description": "A women's clothing store customizing handcrafted outfits and selling both online and physically through social media.",
+      "main_platform": "Instagram",
+      "other_platforms": ["Facebook", "Viber"],
+      "social_links": {
+        "instagram": "https://www.instagram.com/siyonepal/",
+        "facebook": "https://www.facebook.com/nepalsiyo/",
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "linkedin": null,
+        "linktree": null,
+        "other": "Viber"
+      },
+      "sources": [
+        "https://hamronepalibazar.com/business-listing/clothes-store/ladies-wear-store/siyo-nepal_14675"
+      ],
+      "followers": {
+        "main_platform_count": 9500,
+        "main_platform_label": "9.5K",
+        "total_estimated": 11000
+      },
+      "engagement_quality": "Medium",
+      "posting_frequency": "3-5x/week",
+      "website": {
+        "exists": false,
+        "url": null,
+        "quality_score": null,
+        "quality_analysis": "Relies on marketplace listing and Instagram rather than independent ecommerce site."
+      },
+      "website_need_signals": [
+        "Marketplace acting as substitute website",
+        "Customized clothing orders handled manually",
+        "No dedicated checkout system"
+      ],
+      "suggested_website_type": "E-commerce",
+      "business_maturity": "Growing",
+      "contact": {
+        "email": "nachhring1991@gmail.com",
+        "phone": "+9779803001115",
+        "whatsapp": "+9779803001115",
+        "best_method": "Instagram DM"
+      },
+      "founder_owner": null,
+      "lead_quality_score": 7,
+      "conversion_potential": "High",
+      "payment_capacity": "Medium",
+      "observations": "Strong customization angle and delivery system but lacks scalable ecommerce operations."
     }
   ],
   "analysis": {
