@@ -5,972 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BizIntel — Lead Intelligence Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      :root {
-        --bg: #0a0d14;
-        --bg2: #111520;
-        --bg3: #181d2e;
-        --bg4: #1f2540;
-        --border: rgba(255, 255, 255, 0.07);
-        --border2: rgba(255, 255, 255, 0.13);
-        --text: #e8ecf4;
-        --text2: #8892a4;
-        --text3: #545e72;
-        --accent: #4f9eff;
-        --accent2: #2d6fd4;
-        --green: #22c55e;
-        --yellow: #f59e0b;
-        --red: #ef4444;
-        --purple: #a855f7;
-        --teal: #14b8a6;
-        --pink: #ec4899;
-        --orange: #f97316;
-        --font: "Space Grotesk", sans-serif;
-        --mono: "JetBrains Mono", monospace;
-        --radius: 10px;
-        --radius-lg: 16px;
-      }
-
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: var(--font);
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      /* LOADER SCREEN */
-      #loader-screen {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 2rem;
-        padding: 2rem;
-      }
-      .loader-logo {
-        font-size: 13px;
-        letter-spacing: 0.2em;
-        color: var(--accent);
-        font-family: var(--mono);
-        text-transform: uppercase;
-      }
-      .loader-title {
-        font-size: clamp(28px, 4vw, 42px);
-        font-weight: 700;
-        color: var(--text);
-        text-align: center;
-        line-height: 1.2;
-      }
-      .loader-title span {
-        color: var(--accent);
-      }
-      .loader-subtitle {
-        font-size: 15px;
-        color: var(--text2);
-        text-align: center;
-        max-width: 500px;
-        line-height: 1.7;
-      }
-      .loader-box {
-        background: var(--bg2);
-        border: 1px solid var(--border2);
-        border-radius: var(--radius-lg);
-        padding: 2rem;
-        width: 100%;
-        max-width: 640px;
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-      .loader-box label {
-        font-size: 13px;
-        color: var(--text2);
-        font-weight: 500;
-        letter-spacing: 0.05em;
-      }
-      #json-textarea {
-        width: 100%;
-        height: 200px;
-        background: var(--bg);
-        border: 1px solid var(--border2);
-        border-radius: var(--radius);
-        color: var(--text);
-        font-family: var(--mono);
-        font-size: 12px;
-        padding: 1rem;
-        resize: vertical;
-        outline: none;
-        transition: border-color 0.2s;
-      }
-      #json-textarea:focus {
-        border-color: var(--accent);
-      }
-      #json-textarea::placeholder {
-        color: var(--text3);
-      }
-      .loader-divider {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        color: var(--text3);
-        font-size: 13px;
-      }
-      .loader-divider::before,
-      .loader-divider::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--border);
-      }
-      .upload-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        background: var(--bg3);
-        border: 1px dashed var(--border2);
-        border-radius: var(--radius);
-        padding: 1rem;
-        cursor: pointer;
-        color: var(--text2);
-        font-size: 14px;
-        transition: all 0.2s;
-        font-family: var(--font);
-      }
-      .upload-btn:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-        background: rgba(79, 158, 255, 0.05);
-      }
-      #file-input {
-        display: none;
-      }
-      .btn-primary {
-        background: var(--accent);
-        color: #fff;
-        border: none;
-        border-radius: var(--radius);
-        padding: 0.875rem 2rem;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        font-family: var(--font);
-        transition: all 0.2s;
-        width: 100%;
-      }
-      .btn-primary:hover {
-        background: #3d8df5;
-        transform: translateY(-1px);
-      }
-      #load-error {
-        color: #ff6b6b;
-        font-size: 13px;
-        font-family: var(--mono);
-        display: none;
-      }
-      .loader-sample {
-        font-size: 12px;
-        color: var(--text3);
-        text-align: center;
-      }
-      .loader-sample a {
-        color: var(--accent);
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .loader-sample a:hover {
-        text-decoration: underline;
-      }
-
-      /* DASHBOARD */
-      #dashboard {
-        display: none;
-      }
-      .topbar {
-        background: var(--bg2);
-        border-bottom: 1px solid var(--border);
-        padding: 0 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 60px;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      .topbar-logo {
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--text);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .topbar-logo .dot {
-        width: 8px;
-        height: 8px;
-        background: var(--accent);
-        border-radius: 50%;
-        animation: pulse 2s infinite;
-      }
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.4;
-        }
-      }
-      .topbar-meta {
-        font-size: 12px;
-        color: var(--text3);
-        font-family: var(--mono);
-      }
-      .topbar-reset {
-        background: none;
-        border: 1px solid var(--border2);
-        color: var(--text2);
-        padding: 6px 14px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 12px;
-        font-family: var(--font);
-        transition: all 0.15s;
-      }
-      .topbar-reset:hover {
-        border-color: var(--red);
-        color: var(--red);
-      }
-
-      .dashboard-inner {
-        padding: 2rem;
-        max-width: 1600px;
-        margin: 0 auto;
-      }
-
-      /* STAT CARDS */
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 12px;
-        margin-bottom: 2rem;
-      }
-      .stat-card {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 1.25rem 1rem;
-      }
-      .stat-label {
-        font-size: 11px;
-        color: var(--text3);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 0.5rem;
-      }
-      .stat-value {
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--text);
-        font-family: var(--mono);
-      }
-      .stat-sub {
-        font-size: 12px;
-        color: var(--text3);
-        margin-top: 4px;
-      }
-      .stat-accent {
-        color: var(--accent);
-      }
-      .stat-green {
-        color: var(--green);
-      }
-      .stat-yellow {
-        color: var(--yellow);
-      }
-      .stat-purple {
-        color: var(--purple);
-      }
-
-      /* SECTION TITLES */
-      .section-title {
-        font-size: 13px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text2);
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .section-title::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--border);
-      }
-
-      /* CHARTS ROW */
-      .charts-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 16px;
-        margin-bottom: 2rem;
-      }
-      .chart-card {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 1.5rem;
-      }
-      .chart-card-title {
-        font-size: 13px;
-        color: var(--text2);
-        margin-bottom: 1.25rem;
-        font-weight: 500;
-      }
-      .chart-wrap {
-        position: relative;
-        width: 100%;
-      }
-
-      /* FILTERS */
-      .filters-bar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 1.5rem;
-        align-items: center;
-      }
-      .filter-group {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .filter-label {
-        font-size: 12px;
-        color: var(--text3);
-        white-space: nowrap;
-      }
-      select.filter-select {
-        background: var(--bg2);
-        border: 1px solid var(--border2);
-        color: var(--text);
-        border-radius: 6px;
-        padding: 6px 10px;
-        font-size: 13px;
-        font-family: var(--font);
-        outline: none;
-        cursor: pointer;
-        transition: border-color 0.15s;
-      }
-      select.filter-select:focus {
-        border-color: var(--accent);
-      }
-      input.filter-search {
-        background: var(--bg2);
-        border: 1px solid var(--border2);
-        color: var(--text);
-        border-radius: 6px;
-        padding: 6px 12px;
-        font-size: 13px;
-        font-family: var(--font);
-        outline: none;
-        min-width: 200px;
-        transition: border-color 0.15s;
-      }
-      input.filter-search:focus {
-        border-color: var(--accent);
-      }
-      input.filter-search::placeholder {
-        color: var(--text3);
-      }
-      .filter-count {
-        font-size: 12px;
-        color: var(--text3);
-        margin-left: auto;
-        font-family: var(--mono);
-      }
-      .sort-btn {
-        background: none;
-        border: 1px solid var(--border2);
-        color: var(--text2);
-        border-radius: 6px;
-        padding: 6px 10px;
-        cursor: pointer;
-        font-size: 12px;
-        font-family: var(--font);
-        transition: all 0.15s;
-        white-space: nowrap;
-      }
-      .sort-btn.active {
-        border-color: var(--accent);
-        color: var(--accent);
-        background: rgba(79, 158, 255, 0.08);
-      }
-
-      /* BUSINESS GRID */
-      .biz-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 14px;
-        margin-bottom: 2.5rem;
-      }
-      .biz-card {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 1.25rem;
-        cursor: pointer;
-        transition: all 0.2s;
-        position: relative;
-        overflow: hidden;
-      }
-      .biz-card::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: var(--accent);
-        opacity: 0;
-        transition: opacity 0.2s;
-      }
-      .biz-card:hover {
-        border-color: var(--border2);
-        transform: translateY(-2px);
-      }
-      .biz-card:hover::before {
-        opacity: 1;
-      }
-      .biz-card-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        margin-bottom: 0.75rem;
-        gap: 8px;
-      }
-      .biz-name {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--text);
-        line-height: 1.3;
-      }
-      .biz-location {
-        font-size: 12px;
-        color: var(--text3);
-        margin-top: 2px;
-        font-family: var(--mono);
-      }
-      .score-badge {
-        min-width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 15px;
-        font-weight: 700;
-        font-family: var(--mono);
-        flex-shrink: 0;
-      }
-      .score-high {
-        background: rgba(34, 197, 94, 0.15);
-        color: var(--green);
-      }
-      .score-med {
-        background: rgba(245, 158, 11, 0.15);
-        color: var(--yellow);
-      }
-      .score-low {
-        background: rgba(239, 68, 68, 0.12);
-        color: var(--red);
-      }
-      .biz-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-bottom: 0.75rem;
-      }
-      .tag {
-        font-size: 11px;
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-weight: 500;
-      }
-      .tag-industry {
-        background: rgba(79, 158, 255, 0.12);
-        color: var(--accent);
-      }
-      .tag-platform {
-        background: rgba(168, 85, 247, 0.12);
-        color: var(--purple);
-      }
-      .tag-maturity {
-        background: rgba(20, 184, 166, 0.12);
-        color: var(--teal);
-      }
-      .tag-no-site {
-        background: rgba(239, 68, 68, 0.1);
-        color: var(--red);
-      }
-      .tag-has-site {
-        background: rgba(34, 197, 94, 0.1);
-        color: var(--green);
-      }
-      .biz-desc {
-        font-size: 13px;
-        color: var(--text2);
-        line-height: 1.6;
-        margin-bottom: 0.75rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-      .biz-meta-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 12px;
-        color: var(--text3);
-      }
-      .biz-followers {
-        font-family: var(--mono);
-        color: var(--text2);
-      }
-      .biz-engagement {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .eng-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-      }
-      .eng-high {
-        background: var(--green);
-      }
-      .eng-med {
-        background: var(--yellow);
-      }
-      .eng-low {
-        background: var(--red);
-      }
-      .biz-signals {
-        margin-top: 0.75rem;
-        border-top: 1px solid var(--border);
-        padding-top: 0.75rem;
-      }
-      .signals-label {
-        font-size: 11px;
-        color: var(--text3);
-        margin-bottom: 4px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-      .signal-pill {
-        font-size: 11px;
-        color: var(--text3);
-        background: var(--bg3);
-        border-radius: 4px;
-        padding: 2px 7px;
-        display: inline-block;
-        margin: 2px 2px 0 0;
-      }
-
-      /* MODAL */
-      .modal-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.75);
-        z-index: 200;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-        backdrop-filter: blur(4px);
-      }
-      .modal-overlay.open {
-        display: flex;
-      }
-      .modal {
-        background: var(--bg2);
-        border: 1px solid var(--border2);
-        border-radius: var(--radius-lg);
-        width: 100%;
-        max-width: 680px;
-        max-height: 90vh;
-        overflow-y: auto;
-        position: relative;
-      }
-      .modal-header {
-        padding: 1.5rem;
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 1rem;
-        position: sticky;
-        top: 0;
-        background: var(--bg2);
-        z-index: 10;
-      }
-      .modal-title {
-        font-size: 20px;
-        font-weight: 700;
-      }
-      .modal-subtitle {
-        font-size: 13px;
-        color: var(--text3);
-        margin-top: 3px;
-        font-family: var(--mono);
-      }
-      .modal-close {
-        background: none;
-        border: 1px solid var(--border2);
-        color: var(--text2);
-        width: 32px;
-        height: 32px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        transition: all 0.15s;
-      }
-      .modal-close:hover {
-        border-color: var(--red);
-        color: var(--red);
-      }
-      .modal-body {
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-      .modal-section-title {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text3);
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-      }
-      .modal-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-      .modal-field {
-        background: var(--bg3);
-        border-radius: 8px;
-        padding: 0.75rem;
-      }
-      .modal-field-label {
-        font-size: 11px;
-        color: var(--text3);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-bottom: 4px;
-      }
-      .modal-field-value {
-        font-size: 14px;
-        color: var(--text);
-        font-weight: 500;
-        word-break: break-all;
-      }
-      .modal-field-value a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      .modal-field-value a:hover {
-        text-decoration: underline;
-      }
-      .modal-field-value.null-val {
-        color: var(--text3);
-        font-style: italic;
-        font-size: 13px;
-      }
-      .signals-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-      .signal-item {
-        font-size: 12px;
-        background: rgba(239, 68, 68, 0.1);
-        color: #ff8585;
-        border-radius: 5px;
-        padding: 4px 10px;
-      }
-      .contact-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--bg3);
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-      }
-      .contact-icon {
-        font-size: 18px;
-      }
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-      }
-      .contact-type {
-        font-size: 11px;
-        color: var(--text3);
-        text-transform: uppercase;
-        letter-spacing: 0.07em;
-      }
-      .contact-val {
-        font-size: 14px;
-        color: var(--text);
-        word-break: break-all;
-      }
-      .contact-val a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      .platforms-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .platform-chip {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        padding: 5px 12px;
-        font-size: 13px;
-        color: var(--text2);
-      }
-      .platform-chip a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      .platform-chip a:hover {
-        text-decoration: underline;
-      }
-      .score-row {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-      }
-      .score-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-      }
-      .score-ring {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        font-weight: 700;
-        font-family: var(--mono);
-      }
-      .score-ring-label {
-        font-size: 11px;
-        color: var(--text3);
-        text-transform: uppercase;
-        letter-spacing: 0.07em;
-      }
-      .obs-box {
-        background: var(--bg3);
-        border-radius: 8px;
-        padding: 1rem;
-        font-size: 14px;
-        color: var(--text2);
-        line-height: 1.7;
-        border-left: 3px solid var(--accent);
-      }
-
-      /* ANALYSIS SECTION */
-      .analysis-section {
-        margin-bottom: 2.5rem;
-      }
-      .analysis-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 14px;
-      }
-      .analysis-card {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 1.25rem;
-      }
-      .analysis-card-title {
-        font-size: 13px;
-        color: var(--text2);
-        font-weight: 600;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .analysis-card-title .icon {
-        font-size: 16px;
-      }
-      .top-biz-list {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      .top-biz-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 10px;
-        background: var(--bg3);
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background 0.15s;
-      }
-      .top-biz-item:hover {
-        background: var(--bg4);
-      }
-      .top-biz-rank {
-        font-size: 11px;
-        color: var(--text3);
-        font-family: var(--mono);
-        min-width: 20px;
-      }
-      .top-biz-name {
-        font-size: 13px;
-        color: var(--text);
-        flex: 1;
-      }
-      .top-biz-score {
-        font-size: 12px;
-        font-family: var(--mono);
-      }
-      .pattern-list,
-      .strategy-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .pattern-item {
-        font-size: 13px;
-        color: var(--text2);
-        line-height: 1.6;
-        padding: 8px 10px;
-        background: var(--bg3);
-        border-radius: 6px;
-        border-left: 2px solid var(--teal);
-      }
-      .strategy-item {
-        font-size: 13px;
-        color: var(--text2);
-        line-height: 1.6;
-        padding: 8px 10px;
-        background: var(--bg3);
-        border-radius: 6px;
-        border-left: 2px solid var(--yellow);
-      }
-      .problem-item {
-        font-size: 13px;
-        color: var(--text2);
-        line-height: 1.6;
-        padding: 8px 10px;
-        background: var(--bg3);
-        border-radius: 6px;
-        border-left: 2px solid var(--red);
-      }
-      .industry-pill {
-        font-size: 12px;
-        background: rgba(20, 184, 166, 0.12);
-        color: var(--teal);
-        border-radius: 5px;
-        padding: 4px 10px;
-        display: inline-block;
-        margin: 3px 3px 0 0;
-      }
-      .approach-box {
-        background: var(--bg3);
-        border-radius: 8px;
-        padding: 1rem 1.25rem;
-        font-size: 14px;
-        color: var(--text2);
-        line-height: 1.8;
-        grid-column: 1 / -1;
-        border-left: 3px solid var(--green);
-      }
-
-      /* NO RESULTS */
-      .no-results {
-        text-align: center;
-        padding: 4rem 2rem;
-        color: var(--text3);
-        font-size: 15px;
-        grid-column: 1/-1;
-      }
-
-      /* SCROLLBAR */
-      ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: var(--bg2);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--bg4);
-        border-radius: 3px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: var(--text3);
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 600px) {
-        .dashboard-inner {
-          padding: 1rem;
-        }
-        .charts-grid {
-          grid-template-columns: 1fr;
-        }
-        .modal-grid {
-          grid-template-columns: 1fr;
-        }
-        .topbar {
-          padding: 0 1rem;
-        }
-        .topbar-meta {
-          display: none;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- LOADER SCREEN -->
     <div id="loader-screen">
       <div class="loader-logo">BizIntel v2.0 — Lead Intelligence Dashboard</div>
       <div class="loader-title">Load your <span>Research Dataset</span></div>
@@ -987,12 +24,11 @@
         <div id="load-error"></div>
         <div class="loader-divider">or</div>
         <label class="upload-btn" for="file-input">
-          <span style="font-size: 20px">📂</span>
-          Click to upload a .json file
+          <span>Upload a .json file</span>
         </label>
         <input type="file" id="file-input" accept=".json,application/json" />
         <button class="btn-primary" onclick="loadData()">
-          Load & Visualize →
+          Load &amp; Visualize &rarr;
         </button>
         <div class="loader-sample">
           No data yet? <a onclick="loadSampleData()">Load sample dataset</a> to
@@ -1001,7 +37,6 @@
       </div>
     </div>
 
-    <!-- DASHBOARD -->
     <div id="dashboard">
       <nav class="topbar">
         <div class="topbar-logo">
@@ -1009,106 +44,71 @@
           BizIntel Dashboard
         </div>
         <div class="topbar-meta" id="topbar-meta"></div>
-        <button class="topbar-reset" onclick="resetDashboard()">↩ Reset</button>
+        <button class="topbar-reset" onclick="resetDashboard()">&#8634; Reset</button>
       </nav>
       <div class="dashboard-inner">
-        <!-- Stats -->
         <div class="stats-grid" id="stats-grid"></div>
 
-        <!-- Charts -->
         <div class="section-title">Intelligence Overview</div>
         <div class="charts-grid">
           <div class="chart-card">
             <div class="chart-card-title">Businesses by industry</div>
-            <div class="chart-wrap" style="height: 260px">
-              <canvas
-                id="chart-industry"
-                role="img"
-                aria-label="Bar chart of businesses by industry niche"
-              ></canvas>
+            <div class="chart-wrap" style="height: 220px">
+              <canvas id="chart-industry"></canvas>
             </div>
           </div>
           <div class="chart-card">
             <div class="chart-card-title">Main platforms used</div>
-            <div class="chart-wrap" style="height: 260px">
-              <canvas
-                id="chart-platform"
-                role="img"
-                aria-label="Doughnut chart of main social platforms"
-              ></canvas>
+            <div class="chart-wrap" style="height: 220px">
+              <canvas id="chart-platform"></canvas>
             </div>
           </div>
           <div class="chart-card">
             <div class="chart-card-title">Lead quality score distribution</div>
-            <div class="chart-wrap" style="height: 260px">
-              <canvas
-                id="chart-scores"
-                role="img"
-                aria-label="Bar chart of lead quality score distribution"
-              ></canvas>
+            <div class="chart-wrap" style="height: 220px">
+              <canvas id="chart-scores"></canvas>
             </div>
           </div>
           <div class="chart-card">
             <div class="chart-card-title">
-              Website presence & conversion potential
+              Website presence &amp; conversion potential
             </div>
-            <div class="chart-wrap" style="height: 260px">
-              <canvas
-                id="chart-website"
-                role="img"
-                aria-label="Breakdown of website presence and conversion potential"
-              ></canvas>
+            <div class="chart-wrap" style="height: 220px">
+              <canvas id="chart-website"></canvas>
             </div>
           </div>
         </div>
 
-        <!-- Filters & Business Grid -->
         <div class="section-title">Business Intelligence Feed</div>
         <div class="filters-bar">
           <input
             type="text"
             class="filter-search"
             id="search-input"
-            placeholder="🔍  Search businesses..."
+            placeholder="Search businesses..."
             oninput="applyFilters()"
           />
           <div class="filter-group">
             <span class="filter-label">Country</span>
-            <select
-              class="filter-select"
-              id="filter-country"
-              onchange="applyFilters()"
-            >
+            <select class="filter-select" id="filter-country" onchange="applyFilters()">
               <option value="">All</option>
             </select>
           </div>
           <div class="filter-group">
             <span class="filter-label">Industry</span>
-            <select
-              class="filter-select"
-              id="filter-industry"
-              onchange="applyFilters()"
-            >
+            <select class="filter-select" id="filter-industry" onchange="applyFilters()">
               <option value="">All</option>
             </select>
           </div>
           <div class="filter-group">
             <span class="filter-label">Platform</span>
-            <select
-              class="filter-select"
-              id="filter-platform"
-              onchange="applyFilters()"
-            >
+            <select class="filter-select" id="filter-platform" onchange="applyFilters()">
               <option value="">All</option>
             </select>
           </div>
           <div class="filter-group">
             <span class="filter-label">Website</span>
-            <select
-              class="filter-select"
-              id="filter-website"
-              onchange="applyFilters()"
-            >
+            <select class="filter-select" id="filter-website" onchange="applyFilters()">
               <option value="">All</option>
               <option value="no">No Website</option>
               <option value="yes">Has Website</option>
@@ -1116,39 +116,185 @@
           </div>
           <div class="filter-group">
             <span class="filter-label">Min score</span>
-            <select
-              class="filter-select"
-              id="filter-score"
-              onchange="applyFilters()"
-            >
+            <select class="filter-select" id="filter-score" onchange="applyFilters()">
               <option value="0">Any</option>
               <option value="7">7+</option>
               <option value="8">8+</option>
               <option value="9">9+</option>
             </select>
           </div>
-          <button
-            class="sort-btn active"
-            id="sort-score"
-            onclick="setSortMode('score')"
-          >
-            Score ↓
+          <button class="sort-btn active" id="sort-score" onclick="setSortMode('score')">
+            Score &darr;
           </button>
           <button class="sort-btn" id="sort-name" onclick="setSortMode('name')">
             Name A-Z
           </button>
-          <button
-            class="sort-btn"
-            id="sort-followers"
-            onclick="setSortMode('followers')"
-          >
-            Followers ↓
+          <button class="sort-btn" id="sort-followers" onclick="setSortMode('followers')">
+            Followers &darr;
           </button>
           <span class="filter-count" id="filter-count"></span>
         </div>
+
+        <button class="form-toggle-btn" onclick="addNewBusiness()">+ Add New Business</button>
+        <button class="form-toggle-btn" onclick="toggleEditForm()">Edit / Delete Entry</button>
+
+        <div class="edit-form-section" id="edit-form-section">
+          <div class="edit-form-title">Business Entry Form</div>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>Business Name *</label>
+              <input type="text" id="edit-business_name" />
+            </div>
+            <div class="form-field">
+              <label>Country</label>
+              <input type="text" id="edit-country" />
+            </div>
+            <div class="form-field">
+              <label>City / Region</label>
+              <input type="text" id="edit-city_region" />
+            </div>
+            <div class="form-field">
+              <label>Industry / Niche</label>
+              <input type="text" id="edit-industry_niche" />
+            </div>
+            <div class="form-field">
+              <label>Main Platform</label>
+              <input type="text" id="edit-main_platform" />
+            </div>
+            <div class="form-field">
+              <label>Other Platforms (comma sep)</label>
+              <input type="text" id="edit-other_platforms" />
+            </div>
+            <div class="form-field">
+              <label>Instagram URL</label>
+              <input type="text" id="edit-instagram" />
+            </div>
+            <div class="form-field">
+              <label>Facebook URL</label>
+              <input type="text" id="edit-facebook" />
+            </div>
+            <div class="form-field">
+              <label>TikTok URL</label>
+              <input type="text" id="edit-tiktok" />
+            </div>
+            <div class="form-field">
+              <label>YouTube URL</label>
+              <input type="text" id="edit-youtube" />
+            </div>
+            <div class="form-field">
+              <label>LinkedIn URL</label>
+              <input type="text" id="edit-linkedin" />
+            </div>
+            <div class="form-field">
+              <label>Followers (main platform)</label>
+              <input type="number" id="edit-followers_main" />
+            </div>
+            <div class="form-field">
+              <label>Engagement Quality</label>
+              <select id="edit-engagement_quality">
+                <option value="">-- Select --</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Posting Frequency</label>
+              <input type="text" id="edit-posting_frequency" />
+            </div>
+            <div class="form-field">
+              <label>Website Exists</label>
+              <select id="edit-website_exists">
+                <option value="">-- Select --</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Website URL</label>
+              <input type="text" id="edit-website_url" />
+            </div>
+            <div class="form-field">
+              <label>Website Need Signals (| sep)</label>
+              <input type="text" id="edit-website_need_signals" />
+            </div>
+            <div class="form-field">
+              <label>Suggested Website Type</label>
+              <input type="text" id="edit-suggested_website_type" />
+            </div>
+            <div class="form-field">
+              <label>Business Maturity</label>
+              <select id="edit-business_maturity">
+                <option value="">-- Select --</option>
+                <option value="Early-stage">Early-stage</option>
+                <option value="Growing">Growing</option>
+                <option value="Established">Established</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Email</label>
+              <input type="text" id="edit-email" />
+            </div>
+            <div class="form-field">
+              <label>Phone</label>
+              <input type="text" id="edit-phone" />
+            </div>
+            <div class="form-field">
+              <label>WhatsApp</label>
+              <input type="text" id="edit-whatsapp" />
+            </div>
+            <div class="form-field">
+              <label>Best Contact Method</label>
+              <input type="text" id="edit-best_method" />
+            </div>
+            <div class="form-field">
+              <label>Founder / Owner</label>
+              <input type="text" id="edit-founder_owner" />
+            </div>
+            <div class="form-field">
+              <label>Lead Quality Score (1-10)</label>
+              <input type="number" id="edit-lead_quality_score" min="1" max="10" />
+            </div>
+            <div class="form-field">
+              <label>Conversion Potential</label>
+              <select id="edit-conversion_potential">
+                <option value="">-- Select --</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Payment Capacity</label>
+              <select id="edit-payment_capacity">
+                <option value="">-- Select --</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field" style="margin-bottom: 1rem;">
+            <label>Description</label>
+            <textarea id="edit-description"></textarea>
+          </div>
+          <div class="form-field" style="margin-bottom: 1rem;">
+            <label>Observations</label>
+            <textarea id="edit-observations"></textarea>
+          </div>
+          <div class="form-field" style="margin-bottom: 1rem; display: none;">
+            <label>ID (readonly)</label>
+            <input type="text" id="edit-id" readonly />
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary" onclick="submitEdit()">Save Changes</button>
+            <button class="btn-primary" onclick="submitNew()">Add New Business</button>
+            <button class="btn-secondary" onclick="resetEditForm(); document.getElementById('edit-form-section').classList.remove('active');">Cancel</button>
+          </div>
+        </div>
+
         <div class="biz-grid" id="biz-grid"></div>
 
-        <!-- Analysis Section -->
         <div class="section-title">Strategic Analysis</div>
         <div class="analysis-section">
           <div class="analysis-grid" id="analysis-grid"></div>
@@ -1156,1179 +302,21 @@
       </div>
     </div>
 
-    <!-- MODAL -->
-    <div
-      class="modal-overlay"
-      id="modal-overlay"
-      onclick="closeModalOnBg(event)"
-    >
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
       <div class="modal" id="modal">
         <div class="modal-header">
           <div>
             <div class="modal-title" id="modal-title"></div>
             <div class="modal-subtitle" id="modal-subtitle"></div>
           </div>
-          <button class="modal-close" onclick="closeModal()">✕</button>
+          <button class="modal-close" onclick="closeModal()">&#10005;</button>
         </div>
         <div class="modal-body" id="modal-body"></div>
       </div>
     </div>
 
-    <script>
-      let DB = null;
-      let sortMode = "score";
-      let filteredBizList = [];
-      const bizMap = {};
+    <div id="toast"></div>
 
-      // ─── LOADERS ─────────────────────────────────────────────────────────────────
-
-      function loadData() {
-        const raw = document.getElementById("json-textarea").value.trim();
-        if (!raw) {
-          showError("Paste JSON data first.");
-          return;
-        }
-        try {
-          const parsed = JSON.parse(raw);
-          initDashboard(parsed);
-        } catch (e) {
-          showError("Invalid JSON: " + e.message);
-        }
-      }
-
-      document
-        .getElementById("file-input")
-        .addEventListener("change", function (e) {
-          const file = e.target.files[0];
-          if (!file) return;
-          const reader = new FileReader();
-          reader.onload = (ev) => {
-            try {
-              const parsed = JSON.parse(ev.target.result);
-              initDashboard(parsed);
-            } catch (e) {
-              showError("Could not parse file: " + e.message);
-            }
-          };
-          reader.readAsText(file);
-        });
-
-      function showError(msg) {
-        const el = document.getElementById("load-error");
-        el.textContent = "⚠ " + msg;
-        el.style.display = "block";
-      }
-
-      function resetDashboard() {
-        document.getElementById("dashboard").style.display = "none";
-        document.getElementById("loader-screen").style.display = "flex";
-        document.getElementById("json-textarea").value = "";
-        document.getElementById("load-error").style.display = "none";
-        DB = null;
-      }
-
-      // ─── INIT ─────────────────────────────────────────────────────────────────────
-
-      function initDashboard(data) {
-        DB = data;
-        const businesses = data.businesses || [];
-        businesses.forEach((b) => (bizMap[b.id] = b));
-        filteredBizList = [...businesses];
-
-        document.getElementById("loader-screen").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
-
-        const meta = data.metadata || {};
-        document.getElementById("topbar-meta").textContent =
-          `${meta.total_businesses || businesses.length} businesses · Generated ${meta.generated_at ? new Date(meta.generated_at).toLocaleDateString() : "N/A"}`;
-
-        buildStats(businesses, meta);
-        buildCharts(businesses);
-        buildFilters(businesses);
-        buildAnalysis(data.analysis || {}, businesses);
-        renderGrid();
-      }
-
-      // ─── STATS ────────────────────────────────────────────────────────────────────
-
-      function buildStats(biz, meta) {
-        const totalFollowers = biz.reduce(
-          (s, b) => s + (b.followers?.main_platform_count || 0),
-          0,
-        );
-        const noWebsite = biz.filter((b) => !b.website?.exists).length;
-        const highLeads = biz.filter((b) => b.lead_quality_score >= 8).length;
-        const avgScore = biz.length
-          ? (
-              biz.reduce((s, b) => s + (b.lead_quality_score || 0), 0) /
-              biz.length
-            ).toFixed(1)
-          : 0;
-
-        const stats = [
-          {
-            label: "Total Businesses",
-            value: biz.length,
-            sub: `${meta.nepal_count || 0} Nepal · ${meta.international_count || 0} International`,
-            cls: "stat-accent",
-          },
-          {
-            label: "No Website",
-            value: noWebsite,
-            sub: `${Math.round((noWebsite / biz.length) * 100)}% of total`,
-            cls: "stat-yellow",
-          },
-          {
-            label: "High-Quality Leads",
-            value: highLeads,
-            sub: "Score 8 or above",
-            cls: "stat-green",
-          },
-          {
-            label: "Avg Lead Score",
-            value: avgScore,
-            sub: "Out of 10",
-            cls: "stat-purple",
-          },
-          {
-            label: "Est. Total Reach",
-            value: formatNum(totalFollowers),
-            sub: "Combined followers",
-            cls: "stat-accent",
-          },
-          {
-            label: "Industries",
-            value: new Set(biz.map((b) => b.industry_niche)).size,
-            sub: "Unique niches",
-            cls: "",
-          },
-        ];
-        const grid = document.getElementById("stats-grid");
-        grid.innerHTML = stats
-          .map(
-            (s) => `
-    <div class="stat-card">
-      <div class="stat-label">${s.label}</div>
-      <div class="stat-value ${s.cls}">${s.value}</div>
-      <div class="stat-sub">${s.sub}</div>
-    </div>`,
-          )
-          .join("");
-      }
-
-      // ─── CHARTS ───────────────────────────────────────────────────────────────────
-
-      let chartInstances = {};
-      function destroyChart(id) {
-        if (chartInstances[id]) {
-          chartInstances[id].destroy();
-          delete chartInstances[id];
-        }
-      }
-
-      function buildCharts(biz) {
-        buildIndustryChart(biz);
-        buildPlatformChart(biz);
-        buildScoreChart(biz);
-        buildWebsiteChart(biz);
-      }
-
-      function buildIndustryChart(biz) {
-        const counts = {};
-        biz.forEach((b) => {
-          const k = b.industry_niche || "Other";
-          counts[k] = (counts[k] || 0) + 1;
-        });
-        const sorted = Object.entries(counts)
-          .sort((a, b) => b[1] - a[1])
-          .slice(0, 10);
-        destroyChart("industry");
-        const ctx = document.getElementById("chart-industry").getContext("2d");
-        chartInstances["industry"] = new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: sorted.map(([k]) => k.split(" ").slice(0, 2).join(" ")),
-            datasets: [
-              {
-                data: sorted.map(([, v]) => v),
-                backgroundColor: "#4f9eff33",
-                borderColor: "#4f9eff",
-                borderWidth: 1.5,
-                borderRadius: 4,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            indexAxis: "y",
-            plugins: { legend: { display: false } },
-            scales: {
-              x: {
-                grid: { color: "rgba(255,255,255,0.04)" },
-                ticks: { color: "#8892a4", font: { size: 11 } },
-              },
-              y: {
-                grid: { display: false },
-                ticks: { color: "#8892a4", font: { size: 11 } },
-              },
-            },
-          },
-        });
-      }
-
-      function buildPlatformChart(biz) {
-        const counts = {};
-        biz.forEach((b) => {
-          const k = b.main_platform || "Other";
-          counts[k] = (counts[k] || 0) + 1;
-        });
-        const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-        const colors = [
-          "#4f9eff",
-          "#a855f7",
-          "#14b8a6",
-          "#f59e0b",
-          "#ef4444",
-          "#ec4899",
-          "#22c55e",
-          "#f97316",
-        ];
-        destroyChart("platform");
-        const ctx = document.getElementById("chart-platform").getContext("2d");
-        chartInstances["platform"] = new Chart(ctx, {
-          type: "doughnut",
-          data: {
-            labels: sorted.map(([k]) => k),
-            datasets: [
-              {
-                data: sorted.map(([, v]) => v),
-                backgroundColor: colors.slice(0, sorted.length),
-                borderColor: "#111520",
-                borderWidth: 2,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: "62%",
-            plugins: {
-              legend: {
-                display: true,
-                position: "bottom",
-                labels: {
-                  color: "#8892a4",
-                  font: { size: 11 },
-                  padding: 12,
-                  boxWidth: 10,
-                  boxHeight: 10,
-                },
-              },
-            },
-          },
-        });
-      }
-
-      function buildScoreChart(biz) {
-        const dist = Array(10).fill(0);
-        biz.forEach((b) => {
-          const s = Math.min(
-            10,
-            Math.max(1, Math.round(b.lead_quality_score || 0)),
-          );
-          dist[s - 1]++;
-        });
-        const bgColors = dist.map((_, i) =>
-          i >= 7 ? "#22c55e44" : i >= 4 ? "#f59e0b44" : "#ef444444",
-        );
-        const brColors = dist.map((_, i) =>
-          i >= 7 ? "#22c55e" : i >= 4 ? "#f59e0b" : "#ef4444",
-        );
-        destroyChart("scores");
-        const ctx = document.getElementById("chart-scores").getContext("2d");
-        chartInstances["scores"] = new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-            datasets: [
-              {
-                data: dist,
-                backgroundColor: bgColors,
-                borderColor: brColors,
-                borderWidth: 1.5,
-                borderRadius: 4,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-              x: {
-                grid: { display: false },
-                ticks: { color: "#8892a4", font: { size: 11 } },
-              },
-              y: {
-                grid: { color: "rgba(255,255,255,0.04)" },
-                ticks: { color: "#8892a4", font: { size: 11 }, precision: 0 },
-              },
-            },
-          },
-        });
-      }
-
-      function buildWebsiteChart(biz) {
-        const hasWeb = biz.filter((b) => b.website?.exists).length;
-        const noWeb = biz.length - hasWeb;
-        const highConv = biz.filter(
-          (b) => b.conversion_potential === "High",
-        ).length;
-        const medConv = biz.filter(
-          (b) => b.conversion_potential === "Medium",
-        ).length;
-        const lowConv = biz.filter(
-          (b) => b.conversion_potential === "Low",
-        ).length;
-        destroyChart("website");
-        const ctx = document.getElementById("chart-website").getContext("2d");
-        chartInstances["website"] = new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: [
-              "No Website",
-              "Has Website",
-              "High Conv.",
-              "Med Conv.",
-              "Low Conv.",
-            ],
-            datasets: [
-              {
-                data: [noWeb, hasWeb, highConv, medConv, lowConv],
-                backgroundColor: [
-                  "#ef444433",
-                  "#22c55e33",
-                  "#4f9eff33",
-                  "#f59e0b33",
-                  "#6b728033",
-                ],
-                borderColor: [
-                  "#ef4444",
-                  "#22c55e",
-                  "#4f9eff",
-                  "#f59e0b",
-                  "#6b7280",
-                ],
-                borderWidth: 1.5,
-                borderRadius: 4,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-              x: {
-                grid: { display: false },
-                ticks: { color: "#8892a4", font: { size: 11 } },
-              },
-              y: {
-                grid: { color: "rgba(255,255,255,0.04)" },
-                ticks: { color: "#8892a4", font: { size: 11 }, precision: 0 },
-              },
-            },
-          },
-        });
-      }
-
-      // ─── FILTERS ──────────────────────────────────────────────────────────────────
-
-      function buildFilters(biz) {
-        const countries = [
-          ...new Set(biz.map((b) => b.country).filter(Boolean)),
-        ].sort();
-        const industries = [
-          ...new Set(biz.map((b) => b.industry_niche).filter(Boolean)),
-        ].sort();
-        const platforms = [
-          ...new Set(biz.map((b) => b.main_platform).filter(Boolean)),
-        ].sort();
-        populateSelect("filter-country", countries);
-        populateSelect("filter-industry", industries);
-        populateSelect("filter-platform", platforms);
-      }
-
-      function populateSelect(id, options) {
-        const el = document.getElementById(id);
-        options.forEach((o) => {
-          const opt = document.createElement("option");
-          opt.value = o;
-          opt.textContent = o;
-          el.appendChild(opt);
-        });
-      }
-
-      function applyFilters() {
-        const search = document
-          .getElementById("search-input")
-          .value.toLowerCase();
-        const country = document.getElementById("filter-country").value;
-        const industry = document.getElementById("filter-industry").value;
-        const platform = document.getElementById("filter-platform").value;
-        const website = document.getElementById("filter-website").value;
-        const minScore =
-          parseInt(document.getElementById("filter-score").value) || 0;
-        const biz = DB.businesses || [];
-        filteredBizList = biz.filter((b) => {
-          if (
-            search &&
-            !`${b.business_name}${b.description}${b.city_region}${b.founder_owner}`
-              .toLowerCase()
-              .includes(search)
-          )
-            return false;
-          if (country && b.country !== country) return false;
-          if (industry && b.industry_niche !== industry) return false;
-          if (platform && b.main_platform !== platform) return false;
-          if (website === "no" && b.website?.exists) return false;
-          if (website === "yes" && !b.website?.exists) return false;
-          if ((b.lead_quality_score || 0) < minScore) return false;
-          return true;
-        });
-        renderGrid();
-      }
-
-      function setSortMode(mode) {
-        sortMode = mode;
-        document
-          .querySelectorAll(".sort-btn")
-          .forEach((b) => b.classList.remove("active"));
-        document.getElementById("sort-" + mode).classList.add("active");
-        renderGrid();
-      }
-
-      // ─── GRID ─────────────────────────────────────────────────────────────────────
-
-      function renderGrid() {
-        const sorted = [...filteredBizList].sort((a, b) => {
-          if (sortMode === "score")
-            return (b.lead_quality_score || 0) - (a.lead_quality_score || 0);
-          if (sortMode === "name")
-            return (a.business_name || "").localeCompare(b.business_name || "");
-          if (sortMode === "followers")
-            return (
-              (b.followers?.main_platform_count || 0) -
-              (a.followers?.main_platform_count || 0)
-            );
-          return 0;
-        });
-        const grid = document.getElementById("biz-grid");
-        document.getElementById("filter-count").textContent =
-          `${sorted.length} results`;
-        if (!sorted.length) {
-          grid.innerHTML =
-            '<div class="no-results">No businesses match your filters.</div>';
-          return;
-        }
-        grid.innerHTML = sorted.map((b) => bizCard(b)).join("");
-      }
-
-      function bizCard(b) {
-        const score = b.lead_quality_score || 0;
-        const scoreCls =
-          score >= 8 ? "score-high" : score >= 5 ? "score-med" : "score-low";
-        const engCls =
-          b.engagement_quality === "High"
-            ? "eng-high"
-            : b.engagement_quality === "Medium"
-              ? "eng-med"
-              : "eng-low";
-        const webTag = b.website?.exists
-          ? `<span class="tag tag-has-site">Has Website</span>`
-          : `<span class="tag tag-no-site">No Website</span>`;
-        const signals = (b.website_need_signals || []).slice(0, 3);
-        const followersText =
-          b.followers?.main_platform_label ||
-          (b.followers?.main_platform_count
-            ? formatNum(b.followers.main_platform_count)
-            : "—");
-        return `<div class="biz-card" onclick="openModal('${b.id}')">
-    <div class="biz-card-header">
-      <div>
-        <div class="biz-name">${esc(b.business_name)}</div>
-        <div class="biz-location">${esc(b.city_region || "")}, ${esc(b.country || "")}</div>
-      </div>
-      <div class="score-badge ${scoreCls}">${score}</div>
-    </div>
-    <div class="biz-tags">
-      ${b.industry_niche ? `<span class="tag tag-industry">${esc(b.industry_niche)}</span>` : ""}
-      ${b.main_platform ? `<span class="tag tag-platform">${esc(b.main_platform)}</span>` : ""}
-      ${b.business_maturity ? `<span class="tag tag-maturity">${esc(b.business_maturity)}</span>` : ""}
-      ${webTag}
-    </div>
-    <div class="biz-desc">${esc(b.description || "")}</div>
-    <div class="biz-meta-row">
-      <span class="biz-followers">👥 ${followersText}</span>
-      <span class="biz-engagement"><span class="eng-dot ${engCls}"></span>${b.engagement_quality || "—"} engagement</span>
-      <span>${b.suggested_website_type || ""}</span>
-    </div>
-    ${
-      signals.length
-        ? `<div class="biz-signals">
-      <div class="signals-label">Why they need a website</div>
-      ${signals.map((s) => `<span class="signal-pill">${esc(s)}</span>`).join("")}
-    </div>`
-        : ""
-    }
-  </div>`;
-      }
-
-      // ─── MODAL ────────────────────────────────────────────────────────────────────
-
-      function openModal(id) {
-        const b = bizMap[id];
-        if (!b) return;
-        const score = b.lead_quality_score || 0;
-        const scoreCls =
-          score >= 8 ? "score-high" : score >= 5 ? "score-med" : "score-low";
-
-        document.getElementById("modal-title").textContent =
-          b.business_name || "Unknown Business";
-        document.getElementById("modal-subtitle").textContent =
-          `${b.id} · ${b.industry_niche || ""} · ${b.city_region || ""}, ${b.country || ""}`;
-
-        const mainLink =
-          (b.social_links || {})[b.main_platform?.toLowerCase()] || null;
-
-        const contactRows = [];
-        if (b.contact?.email)
-          contactRows.push({
-            icon: "📧",
-            type: "Email",
-            val: `<a href="mailto:${esc(b.contact.email)}">${esc(b.contact.email)}</a>`,
-          });
-        if (b.contact?.whatsapp)
-          contactRows.push({
-            icon: "💬",
-            type: "WhatsApp",
-            val: esc(b.contact.whatsapp),
-          });
-        if (b.contact?.phone)
-          contactRows.push({
-            icon: "📞",
-            type: "Phone",
-            val: esc(b.contact.phone),
-          });
-        if (!contactRows.length)
-          contactRows.push({
-            icon: "📬",
-            type: "Best method",
-            val: esc(b.contact?.best_method || "Instagram DM"),
-          });
-
-        const platformLinks = Object.entries(b.social_links || {})
-          .filter(([, v]) => v)
-          .map(
-            ([k, v]) =>
-              `<div class="platform-chip"><a href="${esc(v)}" target="_blank">${k.charAt(0).toUpperCase() + k.slice(1)} ↗</a></div>`,
-          )
-          .join("");
-
-        const payCapColor =
-          b.payment_capacity === "High"
-            ? "#22c55e"
-            : b.payment_capacity === "Medium"
-              ? "#f59e0b"
-              : "#ef4444";
-        const convColor =
-          b.conversion_potential === "High"
-            ? "#22c55e"
-            : b.conversion_potential === "Medium"
-              ? "#f59e0b"
-              : "#ef4444";
-
-        document.getElementById("modal-body").innerHTML = `
-    <div>
-      <div class="modal-section-title">Scores & Potential</div>
-      <div class="score-row">
-        <div class="score-item">
-          <div class="score-ring ${scoreCls}">${score}</div>
-          <div class="score-ring-label">Lead Score</div>
-        </div>
-        <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
-          <div class="modal-field">
-            <div class="modal-field-label">Conversion potential</div>
-            <div class="modal-field-value" style="color:${convColor}">${b.conversion_potential || "—"}</div>
-          </div>
-          <div class="modal-field">
-            <div class="modal-field-label">Payment capacity</div>
-            <div class="modal-field-value" style="color:${payCapColor}">${b.payment_capacity || "—"}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="modal-section-title">Business Details</div>
-      <div class="modal-grid">
-        <div class="modal-field"><div class="modal-field-label">Industry</div><div class="modal-field-value">${esc(b.industry_niche || "—")}</div></div>
-        <div class="modal-field"><div class="modal-field-label">Business maturity</div><div class="modal-field-value">${esc(b.business_maturity || "—")}</div></div>
-        <div class="modal-field"><div class="modal-field-label">Posting frequency</div><div class="modal-field-value">${esc(b.posting_frequency || "—")}</div></div>
-        <div class="modal-field"><div class="modal-field-label">Engagement quality</div><div class="modal-field-value">${esc(b.engagement_quality || "—")}</div></div>
-        <div class="modal-field"><div class="modal-field-label">Main platform</div><div class="modal-field-value">${mainLink ? `<a href="${esc(mainLink)}" target="_blank">${esc(b.main_platform || "—")} ↗</a>` : esc(b.main_platform || "—")}</div></div>
-        <div class="modal-field"><div class="modal-field-label">Followers (main)</div><div class="modal-field-value">${b.followers?.main_platform_label || formatNum(b.followers?.main_platform_count) || "—"}</div></div>
-        <div class="modal-field"><div class="modal-field-label">Suggested website</div><div class="modal-field-value">${esc(b.suggested_website_type || "—")}</div></div>
-        <div class="modal-field"><div class="modal-field-label">Founder/Owner</div><div class="modal-field-value ${b.founder_owner ? "" : "null-val"}">${esc(b.founder_owner || "Unknown")}</div></div>
-      </div>
-    </div>
-    ${b.description ? `<div><div class="modal-section-title">Description</div><div class="obs-box" style="border-color:var(--purple)">${esc(b.description)}</div></div>` : ""}
-    <div>
-      <div class="modal-section-title">Website Analysis</div>
-      <div class="modal-grid">
-        <div class="modal-field"><div class="modal-field-label">Website exists</div><div class="modal-field-value" style="color:${b.website?.exists ? "var(--green)" : "var(--red)"}">${b.website?.exists ? "✓ Yes" : "✗ No"}</div></div>
-        ${b.website?.url ? `<div class="modal-field"><div class="modal-field-label">URL</div><div class="modal-field-value"><a href="${esc(b.website.url)}" target="_blank">${esc(b.website.url)} ↗</a></div></div>` : '<div class="modal-field"><div class="modal-field-label">URL</div><div class="modal-field-value null-val">None found</div></div>'}
-        ${b.website?.quality_score != null ? `<div class="modal-field"><div class="modal-field-label">Quality score</div><div class="modal-field-value">${b.website.quality_score}/10</div></div>` : ""}
-      </div>
-      ${b.website?.quality_analysis ? `<div class="obs-box" style="margin-top:10px;border-color:var(--red);font-size:13px">${esc(b.website.quality_analysis)}</div>` : ""}
-    </div>
-    ${
-      (b.website_need_signals || []).length
-        ? `<div>
-      <div class="modal-section-title">Why they need a website</div>
-      <div class="signals-list">${(b.website_need_signals || []).map((s) => `<div class="signal-item">⚠ ${esc(s)}</div>`).join("")}</div>
-    </div>`
-        : ""
-    }
-    <div>
-      <div class="modal-section-title">Contact Information</div>
-      ${contactRows.map((r) => `<div class="contact-row"><div class="contact-icon">${r.icon}</div><div class="contact-info"><div class="contact-type">${r.type}</div><div class="contact-val">${r.val}</div></div></div>`).join("")}
-      <div style="margin-top:8px;font-size:12px;color:var(--text3)">Best contact method: <strong style="color:var(--text2)">${esc(b.contact?.best_method || "—")}</strong></div>
-    </div>
-    ${platformLinks ? `<div><div class="modal-section-title">All social platforms</div><div class="platforms-list">${platformLinks}</div></div>` : ""}
-    ${b.observations ? `<div><div class="modal-section-title">Analyst observations</div><div class="obs-box">${esc(b.observations)}</div></div>` : ""}
-  `;
-        document.getElementById("modal-overlay").classList.add("open");
-      }
-
-      function closeModal() {
-        document.getElementById("modal-overlay").classList.remove("open");
-      }
-      function closeModalOnBg(e) {
-        if (e.target === document.getElementById("modal-overlay")) closeModal();
-      }
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeModal();
-      });
-
-      // ─── ANALYSIS ─────────────────────────────────────────────────────────────────
-
-      function buildAnalysis(analysis, biz) {
-        const grid = document.getElementById("analysis-grid");
-        const cards = [];
-
-        function topListCard(title, icon, ids, colorClass) {
-          if (!ids || !ids.length) return "";
-          const items = ids
-            .map((id, i) => {
-              const b = bizMap[id];
-              if (!b) return "";
-              return `<div class="top-biz-item" onclick="openModal('${id}')">
-        <span class="top-biz-rank">#${i + 1}</span>
-        <span class="top-biz-name">${esc(b.business_name)}</span>
-        <span class="top-biz-score" style="color:${colorClass}">${b.lead_quality_score || "—"}</span>
-      </div>`;
-            })
-            .join("");
-          return `<div class="analysis-card">
-      <div class="analysis-card-title"><span class="icon">${icon}</span>${title}</div>
-      <div class="top-biz-list">${items || '<div style="color:var(--text3);font-size:13px">No data</div>'}</div>
-    </div>`;
-        }
-
-        cards.push(
-          topListCard(
-            "Top 15 Highest Potential",
-            "🏆",
-            analysis.top_15_highest_potential,
-            "var(--green)",
-          ),
-        );
-        cards.push(
-          topListCard(
-            "Easiest to Approach",
-            "👋",
-            analysis.top_10_easiest_approach,
-            "var(--teal)",
-          ),
-        );
-        cards.push(
-          topListCard(
-            "Most Likely to Pay",
-            "💰",
-            analysis.top_10_likely_to_pay,
-            "var(--yellow)",
-          ),
-        );
-        cards.push(
-          topListCard(
-            "Best for E-Commerce",
-            "🛒",
-            analysis.top_10_ecommerce,
-            "var(--purple)",
-          ),
-        );
-        cards.push(
-          topListCard(
-            "Best for SEO + AdSense",
-            "📈",
-            analysis.top_10_seo_adsense,
-            "var(--accent)",
-          ),
-        );
-        cards.push(
-          topListCard(
-            "Most Underserved Digitally",
-            "🌐",
-            analysis.most_underserved_digital,
-            "var(--pink)",
-          ),
-        );
-        cards.push(
-          topListCard(
-            "Fastest Growth Signals",
-            "🚀",
-            analysis.fastest_growth_signals,
-            "var(--orange)",
-          ),
-        );
-
-        if ((analysis.common_patterns || []).length) {
-          cards.push(`<div class="analysis-card">
-      <div class="analysis-card-title"><span class="icon">🔍</span>Common patterns discovered</div>
-      <div class="pattern-list">${analysis.common_patterns.map((p) => `<div class="pattern-item">${esc(p)}</div>`).join("")}</div>
-    </div>`);
-        }
-
-        if ((analysis.biggest_problems || []).length) {
-          cards.push(`<div class="analysis-card">
-      <div class="analysis-card-title"><span class="icon">⚠</span>Biggest website problems</div>
-      <div class="pattern-list">${analysis.biggest_problems.map((p) => `<div class="problem-item">${esc(p)}</div>`).join("")}</div>
-    </div>`);
-        }
-
-        if ((analysis.outreach_strategies || []).length) {
-          cards.push(`<div class="analysis-card">
-      <div class="analysis-card-title"><span class="icon">📣</span>Best outreach strategies</div>
-      <div class="strategy-list">${analysis.outreach_strategies.map((p) => `<div class="strategy-item">${esc(p)}</div>`).join("")}</div>
-    </div>`);
-        }
-
-        if ((analysis.best_industries_to_target_first || []).length) {
-          cards.push(`<div class="analysis-card">
-      <div class="analysis-card-title"><span class="icon">🎯</span>Best industries to target first</div>
-      <div>${analysis.best_industries_to_target_first.map((i) => `<span class="industry-pill">${esc(i)}</span>`).join("")}</div>
-    </div>`);
-        }
-
-        if (analysis.approach_strategy_for_beginners) {
-          cards.push(`<div class="analysis-card" style="grid-column:1/-1">
-      <div class="analysis-card-title"><span class="icon">💡</span>How to approach as a beginner freelancer</div>
-      <div class="approach-box">${esc(analysis.approach_strategy_for_beginners)}</div>
-    </div>`);
-        }
-
-        grid.innerHTML = cards.filter(Boolean).join("");
-      }
-
-      // ─── UTILS ────────────────────────────────────────────────────────────────────
-
-      function esc(str) {
-        if (str == null) return "";
-        return String(str)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;");
-      }
-
-      function formatNum(n) {
-        if (n == null || isNaN(n)) return "—";
-        if (n >= 1000000) return (n / 1000000).toFixed(1) + "M";
-        if (n >= 1000) return (n / 1000).toFixed(1) + "K";
-        return String(n);
-      }
-
-      // ─── SAMPLE DATA ──────────────────────────────────────────────────────────────
-
-      function loadSampleData() {
-        const sample = {
-          metadata: {
-            generated_at: "2025-05-09T10:00:00Z",
-            total_businesses: 5,
-            nepal_count: 4,
-            international_count: 1,
-            research_depth_notes: "Sample dataset for dashboard preview.",
-          },
-          businesses: [
-            {
-              id: "BIZ_001",
-              business_name: "Himalayan Brew Co.",
-              country: "Nepal",
-              city_region: "Kathmandu",
-              industry_niche: "Food & Beverage",
-              description:
-                "A specialty coffee brand operating entirely through Instagram. They post daily latte art and brewing tutorials with 14K engaged followers.",
-              main_platform: "Instagram",
-              other_platforms: ["Facebook"],
-              social_links: {
-                instagram: "https://instagram.com",
-                facebook: "https://facebook.com",
-                tiktok: null,
-                youtube: null,
-                twitter: null,
-                linkedin: null,
-                linktree: null,
-                other: null,
-              },
-              followers: {
-                main_platform_count: 14200,
-                main_platform_label: "14.2K",
-                total_estimated: 17000,
-              },
-              engagement_quality: "High",
-              posting_frequency: "Daily",
-              website: {
-                exists: false,
-                url: null,
-                quality_score: null,
-                quality_analysis:
-                  "No website found. WhatsApp link in Instagram bio used for orders.",
-              },
-              website_need_signals: [
-                "Uses WhatsApp for all orders",
-                "No menu/catalog online",
-                "No SEO presence",
-                "Comments constantly asking for price list",
-              ],
-              suggested_website_type: "Restaurant Menu Site",
-              business_maturity: "Growing",
-              contact: {
-                email: null,
-                phone: null,
-                whatsapp: "+977-98XXXXXXXX",
-                best_method: "Instagram DM",
-              },
-              founder_owner: "Aarav Shrestha",
-              lead_quality_score: 9,
-              conversion_potential: "High",
-              payment_capacity: "Medium",
-              observations:
-                "Strong brand identity and very active community. Would greatly benefit from a menu site with online ordering. Owner is responsive to DMs.",
-            },
-            {
-              id: "BIZ_002",
-              business_name: "Kushal Thapas Photography",
-              country: "Nepal",
-              city_region: "Pokhara",
-              industry_niche: "Photography & Videography",
-              description:
-                "Wedding and travel photographer with stunning portfolio shared only on Instagram. Does destination shoots across Nepal and India.",
-              main_platform: "Instagram",
-              other_platforms: ["YouTube"],
-              social_links: {
-                instagram: "https://instagram.com",
-                facebook: null,
-                tiktok: null,
-                youtube: "https://youtube.com",
-                twitter: null,
-                linkedin: null,
-                linktree: "https://linktr.ee",
-                other: null,
-              },
-              followers: {
-                main_platform_count: 8500,
-                main_platform_label: "8.5K",
-                total_estimated: 11000,
-              },
-              engagement_quality: "High",
-              posting_frequency: "3-5x/week",
-              website: {
-                exists: false,
-                url: null,
-                quality_score: null,
-                quality_analysis:
-                  "No portfolio website. Uses Linktree with 3 links: WhatsApp, Instagram, email.",
-              },
-              website_need_signals: [
-                "No portfolio website",
-                "No booking system",
-                "No SEO for 'wedding photographer Nepal'",
-                "Difficult for clients to browse packages",
-              ],
-              suggested_website_type: "Portfolio",
-              business_maturity: "Established",
-              contact: {
-                email: "kushal@gmail.com",
-                phone: null,
-                whatsapp: null,
-                best_method: "Email",
-              },
-              founder_owner: "Kushal Thapa",
-              lead_quality_score: 8,
-              conversion_potential: "High",
-              payment_capacity: "High",
-              observations:
-                "Established photographer with consistent style. A portfolio site with booking system would dramatically increase leads from Google searches. High-paying niche.",
-            },
-            {
-              id: "BIZ_003",
-              business_name: "Sitara Handmade",
-              country: "Nepal",
-              city_region: "Lalitpur",
-              industry_niche: "Handmade & Crafts",
-              description:
-                "Hand-stitched bags and accessories made by local artisans. Sells through Facebook Live events and Instagram stories with growing interest from export market.",
-              main_platform: "Facebook",
-              other_platforms: ["Instagram", "TikTok"],
-              social_links: {
-                instagram: "https://instagram.com",
-                facebook: "https://facebook.com",
-                tiktok: "https://tiktok.com",
-                youtube: null,
-                twitter: null,
-                linkedin: null,
-                linktree: null,
-                other: null,
-              },
-              followers: {
-                main_platform_count: 22000,
-                main_platform_label: "22K",
-                total_estimated: 30000,
-              },
-              engagement_quality: "High",
-              posting_frequency: "Daily",
-              website: {
-                exists: false,
-                url: null,
-                quality_score: null,
-                quality_analysis:
-                  "No website. Orders taken via Facebook comments and Messenger.",
-              },
-              website_need_signals: [
-                "No e-commerce system",
-                "International buyers struggling to order",
-                "No Stripe/PayPal integration",
-                "No product catalog",
-              ],
-              suggested_website_type: "E-commerce",
-              business_maturity: "Growing",
-              contact: {
-                email: "sitarahandmade@gmail.com",
-                phone: null,
-                whatsapp: "+977-98XXXXXXXX",
-                best_method: "Facebook Message",
-              },
-              founder_owner: "Sita Maharjan",
-              lead_quality_score: 9,
-              conversion_potential: "High",
-              payment_capacity: "Medium",
-              observations:
-                "Has real export potential. An e-commerce site with PayPal/Stripe could unlock international sales. Very high growth signal.",
-            },
-            {
-              id: "BIZ_004",
-              business_name: "Fit With Raj",
-              country: "Nepal",
-              city_region: "Biratnagar",
-              industry_niche: "Health & Fitness",
-              description:
-                "Online fitness coaching brand run by a certified trainer. Sells workout plans and nutrition guides through Instagram DMs and Google Forms.",
-              main_platform: "Instagram",
-              other_platforms: ["YouTube", "Facebook"],
-              social_links: {
-                instagram: "https://instagram.com",
-                facebook: "https://facebook.com",
-                tiktok: null,
-                youtube: "https://youtube.com",
-                twitter: null,
-                linkedin: null,
-                linktree: "https://linktr.ee",
-                other: null,
-              },
-              followers: {
-                main_platform_count: 6200,
-                main_platform_label: "6.2K",
-                total_estimated: 9000,
-              },
-              engagement_quality: "Medium",
-              posting_frequency: "3-5x/week",
-              website: {
-                exists: false,
-                url: null,
-                quality_score: null,
-                quality_analysis:
-                  "Uses Linktree linking to Google Form for program sign-up. Very unprofessional.",
-              },
-              website_need_signals: [
-                "Google Form for program purchase",
-                "No payment gateway",
-                "No client portal",
-                "Poor trust signals",
-              ],
-              suggested_website_type: "Landing Page",
-              business_maturity: "Early-stage",
-              contact: {
-                email: null,
-                phone: null,
-                whatsapp: null,
-                best_method: "Instagram DM",
-              },
-              founder_owner: "Raj Yadav",
-              lead_quality_score: 7,
-              conversion_potential: "Medium",
-              payment_capacity: "Low",
-              observations:
-                "Growing fitness brand but monetization is poor. A landing page with Stripe integration could triple his revenue. Approachable as a student project.",
-            },
-            {
-              id: "BIZ_005",
-              business_name: "Dilli Haat Boutique",
-              country: "India",
-              city_region: "Delhi",
-              industry_niche: "Clothing & Fashion",
-              description:
-                "Ethnic wear boutique selling sarees, lehengas and kurta sets. Operates through Instagram DMs and WhatsApp catalog. Has 31K followers.",
-              main_platform: "Instagram",
-              other_platforms: ["WhatsApp"],
-              social_links: {
-                instagram: "https://instagram.com",
-                facebook: null,
-                tiktok: null,
-                youtube: null,
-                twitter: null,
-                linkedin: null,
-                linktree: null,
-                other: null,
-              },
-              followers: {
-                main_platform_count: 31000,
-                main_platform_label: "31K",
-                total_estimated: 31000,
-              },
-              engagement_quality: "Medium",
-              posting_frequency: "Daily",
-              website: {
-                exists: false,
-                url: null,
-                quality_score: null,
-                quality_analysis:
-                  "No website. Product catalog shared via WhatsApp PDF. Highly inefficient.",
-              },
-              website_need_signals: [
-                "WhatsApp PDF catalog",
-                "No size guide",
-                "No ordering system",
-                "No returns policy page",
-                "No SEO",
-              ],
-              suggested_website_type: "E-commerce",
-              business_maturity: "Established",
-              contact: {
-                email: "dillihaat@gmail.com",
-                phone: "+91-98XXXXXXXX",
-                whatsapp: "+91-98XXXXXXXX",
-                best_method: "WhatsApp",
-              },
-              founder_owner: "Priya Sharma",
-              lead_quality_score: 8,
-              conversion_potential: "High",
-              payment_capacity: "High",
-              observations:
-                "Established boutique with proven demand. E-commerce site with Razorpay would dramatically increase sales efficiency. High payment capacity.",
-            },
-          ],
-          analysis: {
-            top_15_highest_potential: [
-              "BIZ_001",
-              "BIZ_003",
-              "BIZ_002",
-              "BIZ_005",
-              "BIZ_004",
-            ],
-            top_10_easiest_approach: [
-              "BIZ_004",
-              "BIZ_001",
-              "BIZ_003",
-              "BIZ_002",
-              "BIZ_005",
-            ],
-            top_10_likely_to_pay: [
-              "BIZ_002",
-              "BIZ_005",
-              "BIZ_001",
-              "BIZ_003",
-              "BIZ_004",
-            ],
-            top_10_ecommerce: [
-              "BIZ_003",
-              "BIZ_005",
-              "BIZ_001",
-              "BIZ_004",
-              "BIZ_002",
-            ],
-            top_10_seo_adsense: [
-              "BIZ_002",
-              "BIZ_004",
-              "BIZ_001",
-              "BIZ_003",
-              "BIZ_005",
-            ],
-            most_underserved_digital: ["BIZ_005", "BIZ_003", "BIZ_004"],
-            fastest_growth_signals: ["BIZ_003", "BIZ_001", "BIZ_005"],
-            common_patterns: [
-              "Almost all businesses rely on WhatsApp or DM-based ordering with no automation",
-              "Instagram is the dominant platform but most have no website or broken links",
-              "Most founders are solo operators unaware of how much revenue a website could generate",
-              "Comment sections are flooded with price/availability questions that a website FAQ would resolve",
-            ],
-            biggest_problems: [
-              "Zero e-commerce infrastructure — sales happen manually through DMs",
-              "No SEO — completely invisible on Google search",
-              "No portfolio or catalog — customers can't browse products easily",
-              "No trust signals — no reviews page, no about page, no policies",
-            ],
-            outreach_strategies: [
-              "Comment on their most popular post: 'Have you considered a website? I noticed customers asking the same questions repeatedly'",
-              "Send a DM offering a FREE audit of their online presence with 3 specific improvements",
-              "Create a before/after mockup of their website as an attachment in your first message",
-              "Offer a starter landing page for free in exchange for a testimonial",
-            ],
-            best_industries_to_target_first: [
-              "Food & Beverage",
-              "Photography & Videography",
-              "Handmade & Crafts",
-              "Clothing & Fashion",
-              "Health & Fitness",
-            ],
-            approach_strategy_for_beginners:
-              "Start by identifying businesses with 5K-30K followers that post daily but have zero website. These businesses have proven demand and an active audience, meaning they're ripe for conversion. Reach out via Instagram DM with a specific observation about their page — not a generic pitch. Something like: 'I noticed your customers keep asking for a price list in the comments — I could build you a simple catalog page for that.' Offer a free mockup or wireframe as a proof of concept. Price your first 3 projects very low (even free) to build a portfolio, then raise rates. Focus on cafes, photographers, and handmade product sellers — they understand visual presentation and are most likely to see the value of a beautiful website.",
-          },
-        };
-        document.getElementById("json-textarea").value = JSON.stringify(
-          sample,
-          null,
-          2,
-        );
-        initDashboard(sample);
-      }
-    </script>
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
-      integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
-      data-cf-beacon='{"version":"2024.11.0","token":"2e06e8f7fd2146af8b754d8946ffc85c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
-      crossorigin="anonymous"
-    ></script>
+    <script src="script.js"></script>
   </body>
 </html>
