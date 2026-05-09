@@ -244,10 +244,11 @@ function bizCard(b) {
                 '<div class="biz-name">' + esc(b.business_name) + '</div>' +
                 '<div class="biz-location"><i class="fa-solid fa-location-dot"></i> ' + esc(b.city_region || '') + ', ' + esc(b.country || '') + '</div>' +
             '</div>' +
-            '<div style="display:flex;align-items:center;gap:8px;">' +
+            '<div style="display:flex;align-items:center;gap:6px;">' +
                 '<div class="score-badge ' + scoreCls + '">' + score + '</div>' +
                 '<div class="biz-actions">' +
-                    '<button class="action-btn edit-btn" onclick="event.stopPropagation();openEditModal(\'' + b.id + '\')" title="Edit this business"><i class="fa-solid fa-pencil"></i></button>' +
+                    '<button class="action-btn" onclick="event.stopPropagation();copyBizSummary(\'' + b.id + '\')" title="Copy full summary"><i class="fa-solid fa-copy"></i></button>' +
+                    '<button class="action-btn" onclick="event.stopPropagation();openEditModal(\'' + b.id + '\')" title="Edit this business"><i class="fa-solid fa-pencil"></i></button>' +
                     '<button class="action-btn delete-btn" onclick="event.stopPropagation();openDeleteModal(\'' + b.id + '\')" title="Delete this business"><i class="fa-solid fa-trash"></i></button>' +
                 '</div>' +
             '</div>' +
@@ -272,8 +273,8 @@ function bizCard(b) {
 /* ---- MODAL SYSTEM ---- */
 function openModal(title, subtitle, bodyHTML, size) {
     currentModalType = title;
-    document.getElementById('modal-title').textContent = title;
-    document.getElementById('modal-subtitle').textContent = subtitle || '';
+    document.getElementById('modal-title').innerHTML = title;
+    document.getElementById('modal-subtitle').innerHTML = subtitle || '';
     document.getElementById('modal-body').innerHTML = bodyHTML;
     document.getElementById('modal').className = 'modal' + (size ? ' modal-' + size : '');
     document.getElementById('modal-overlay').classList.add('open');
@@ -293,6 +294,56 @@ document.addEventListener('keydown', function (e) {
 });
 
 /* ---- VIEW MODAL ---- */
+function buildBizSummary(b) {
+    const websiteStatus = b.website?.exists ? 'Yes (' + (b.website?.url || 'no URL') + ')' : 'No';
+    const socialLinks = Object.entries(b.social_links || {})
+        .filter(([, v]) => v)
+        .map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + v)
+        .join('\n  • ');
+    const signals = (b.website_need_signals || []).join(', ');
+
+    const lines = [
+        '=== BUSINESS SUMMARY ===',
+        '',
+        'ID: ' + (b.id || ''),
+        'Name: ' + (b.business_name || ''),
+        'Country: ' + (b.country || '') + ' | City: ' + (b.city_region || ''),
+        'Industry: ' + (b.industry_niche || ''),
+        'Platform: ' + (b.main_platform || '') + (b.other_platforms?.length ? ' (+ ' + b.other_platforms.join(', ') + ')' : ''),
+        '',
+        '--- Social Profiles ---',
+        '  • ' + (socialLinks || 'None listed'),
+        '',
+        '--- Metrics ---',
+        'Followers: ' + (b.followers?.main_platform_count ? b.followers.main_platform_count.toLocaleString() + ' (' + b.followers.main_platform_label + ')' : 'Unknown'),
+        'Engagement: ' + (b.engagement_quality || '') + ' | Posting: ' + (b.posting_frequency || ''),
+        'Maturity: ' + (b.business_maturity || ''),
+        'Lead Score: ' + (b.lead_quality_score || '') + '/10',
+        'Conversion Potential: ' + (b.conversion_potential || ''),
+        'Payment Capacity: ' + (b.payment_capacity || ''),
+        'Website: ' + websiteStatus,
+        'Suggested Website: ' + (b.suggested_website_type || ''),
+        '',
+        '--- Website Need Signals ---',
+        signals ? '  • ' + signals : '  None listed',
+        '',
+        '--- Contact ---',
+        'Email: ' + (b.contact?.email || 'None'),
+        'Phone: ' + (b.contact?.phone || 'None'),
+        'WhatsApp: ' + (b.contact?.whatsapp || 'None'),
+        'Best Contact: ' + (b.contact?.best_method || 'Unknown'),
+        'Founder/Owner: ' + (b.founder_owner || 'Unknown'),
+        '',
+        '--- Description ---',
+        (b.description || 'No description.'),
+        '',
+        '--- Observations ---',
+        (b.observations || 'No observations.'),
+    ];
+
+    return lines.join('\n');
+}
+
 function openViewModal(id) {
     const b = bizMap[id];
     if (!b) return;
@@ -313,13 +364,13 @@ function openViewModal(id) {
         .join('');
 
     openModal(
-        b.business_name || 'Unknown Business',
-        b.id + '  |  ' + b.industry_niche + '  |  ' + b.city_region + ', ' + b.country,
+        esc(b.business_name) || 'Unknown Business',
+        b.id + '  |  ' + esc(b.industry_niche) + '  |  ' + esc(b.city_region) + ', ' + esc(b.country),
         '<div><div class="modal-section-title"><i class="fa-solid fa-chart-simple"></i> Scores &amp; Potential</div><div class="score-row">' +
             '<div class="score-item"><div class="score-ring ' + scoreCls + '">' + score + '</div><div class="score-ring-label">Lead Score</div></div>' +
             '<div style="flex:1;display:flex;flex-direction:column;gap:8px;">' +
-                '<div class="modal-field"><div class="modal-field-label">Conversion potential</div><div class="modal-field-value" style="color:' + convColor + '">' + (b.conversion_potential || '—') + '</div></div>' +
-                '<div class="modal-field"><div class="modal-field-label">Payment capacity</div><div class="modal-field-value" style="color:' + payCapColor + '">' + (b.payment_capacity || '—') + '</div></div>' +
+                '<div class="modal-field"><div class="modal-field-label">Conversion potential</div><div class="modal-field-value" style="color:' + convColor + '">' + esc(b.conversion_potential || '—') + '</div></div>' +
+                '<div class="modal-field"><div class="modal-field-label">Payment capacity</div><div class="modal-field-value" style="color:' + payCapColor + '">' + esc(b.payment_capacity || '—') + '</div></div>' +
             '</div>' +
         '</div></div>' +
 
@@ -354,9 +405,21 @@ function openViewModal(id) {
 
         (b.observations ? '<div><div class="modal-section-title"><i class="fa-solid fa-magnifying-glass"></i> Analyst Observations</div><div class="obs-box"><i class="fa-solid fa-quote-left"></i> ' + esc(b.observations) + '</div></div>' : '') +
 
+        '<div><div class="modal-section-title"><i class="fa-solid fa-clipboard-list"></i> Full Summary (Copy Ready)</div></div>' +
+        '<div class="summary-box">' +
+            '<div class="summary-preview" id="summary-preview-' + b.id + '">' + esc(buildBizSummary(b)) + '</div>' +
+            '<div class="summary-actions">' +
+                '<button class="modal-btn primary" onclick="copySummary(\'' + b.id + '\')"><i class="fa-solid fa-copy"></i> Copy Summary</button>' +
+                '<button class="modal-btn secondary" onclick="downloadSummary(\'' + b.id + '\')"><i class="fa-solid fa-download"></i> Download .txt</button>' +
+            '</div>' +
+        '</div>' +
+
         '<div class="modal-footer-actions">' +
             '<button class="modal-btn danger" onclick="openDeleteModal(\'' + b.id + '\')"><i class="fa-solid fa-trash"></i> Delete</button>' +
-            '<button class="modal-btn primary" onclick="closeAllModals();openEditModal(\'' + b.id + '\')"><i class="fa-solid fa-pencil"></i> Edit</button>' +
+            '<div style="display:flex;gap:8px;justify-content:flex-end;">' +
+                '<button class="modal-btn secondary" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i> Close</button>' +
+                '<button class="modal-btn primary" onclick="closeAllModals();openEditModal(\'' + b.id + '\')"><i class="fa-solid fa-pencil"></i> Edit</button>' +
+            '</div>' +
         '</div>',
         'lg'
     );
@@ -637,6 +700,59 @@ function saveRawJson() {
             errorEl.textContent = 'Save failed: ' + (data ? data.error : 'Server error'); errorEl.style.display = 'block';
         }
     });
+}
+
+function copySummary(id) {
+    const text = buildBizSummary(bizMap[id]);
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('Summary copied to clipboard.', 'success');
+        }).catch(() => {
+            fallbackCopy(text);
+        });
+    } else {
+        fallbackCopy(text);
+    }
+}
+
+function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); showToast('Summary copied to clipboard.', 'success'); }
+    catch (e) { showToast('Copy failed. Please copy manually.', 'error'); }
+    document.body.removeChild(ta);
+}
+
+function downloadSummary(id) {
+    const b = bizMap[id];
+    if (!b) return;
+    const text = buildBizSummary(b);
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (b.business_name || b.id || 'business') + '-summary.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Summary downloaded.', 'success');
+}
+
+function copyBizSummary(id) {
+    const text = buildBizSummary(bizMap[id]);
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast('Summary copied!', 'success')).catch(() => fallbackCopy(text));
+    } else {
+        fallbackCopy(text);
+    }
 }
 
 /* ---- ANALYSIS ---- */

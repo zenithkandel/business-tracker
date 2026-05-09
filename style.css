@@ -1085,6 +1085,43 @@ input.filter-search::placeholder { color: var(--text3); }
 
 .approach-box i { color: var(--green); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
 
+/* ---- SUMMARY BOX ---- */
+.summary-box {
+    background: var(--bg);
+    border: 2px solid var(--border2);
+    border-radius: 2px;
+}
+
+.summary-preview {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text2);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0.875rem;
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border);
+}
+
+.summary-actions {
+    display: flex;
+    gap: 8px;
+    padding: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.summary-copy-feedback {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--green);
+    font-weight: 700;
+    display: none;
+    align-items: center;
+    gap: 4px;
+}
+
 /* ---- TOAST ---- */
 .toast {
     position: fixed;
